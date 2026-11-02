@@ -347,7 +347,13 @@ class DefenseInDepthFirewall:
         latencies = payload.get("latencies_ms", [elapsed_ms])
         p95_lat = sorted(latencies)[int(0.95 * (len(latencies) - 1))] if latencies else elapsed_ms
 
-        outcomes = [cand == exp for cand, exp in zip(cand_results, oracle_outputs)]
+        outcomes = []
+        for cand, exp in zip(cand_results, oracle_outputs):
+            if isinstance(cand, float) and isinstance(exp, float):
+                outcomes.append(abs(cand - exp) <= 1e-6)
+            else:
+                outcomes.append(cand == exp)
+
         divergence = 1.0 - (sum(outcomes) / max(1, len(outcomes)))
         failure_tax = FailureTaxonomy.NONE if divergence == 0.0 else FailureTaxonomy.INVARIANT_VIOLATION
         reason = "OK" if divergence == 0.0 else f"Oracle divergence on {divergence*100:.1f}% of property tests."

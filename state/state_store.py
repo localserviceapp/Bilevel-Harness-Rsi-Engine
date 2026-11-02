@@ -73,6 +73,15 @@ class MAPElitesStateStore:
         self.conn.commit()
         return int(cur.lastrowid)
 
+    def mark_domain_issues_resolved(self, domain_archetype: str) -> int:
+        cur = self.conn.cursor()
+        cur.execute(
+            "UPDATE issue_registry SET resolved = 1 WHERE domain_archetype = ? AND resolved = 0",
+            (domain_archetype,),
+        )
+        self.conn.commit()
+        return int(cur.rowcount)
+
     def try_admit_candidate(
         self,
         harness: CognitiveHarness,
@@ -154,6 +163,30 @@ class MAPElitesStateStore:
             "pareto_efficiency_score": row[5],
             "step_updated": row[6],
         }
+
+    def list_all_elites(self) -> List[Dict]:
+        cur = self.conn.cursor()
+        cur.execute(
+            """
+            SELECT compute_tier, domain_archetype, harness_id, vault_pass_rate,
+                   normalized_tokens, normalized_latency, pareto_efficiency_score, step_updated
+            FROM map_elites_archive
+            ORDER BY domain_archetype, compute_tier
+            """
+        )
+        return [
+            {
+                "compute_tier": r[0],
+                "domain_archetype": r[1],
+                "harness_id": r[2],
+                "vault_pass_rate": r[3],
+                "normalized_tokens": r[4],
+                "normalized_latency": r[5],
+                "pareto_efficiency_score": r[6],
+                "step_updated": r[7],
+            }
+            for r in cur.fetchall()
+        ]
 
     def list_unresolved_issues(self) -> List[Dict]:
         cur = self.conn.cursor()

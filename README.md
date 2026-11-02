@@ -1,82 +1,29 @@
-# Bi-Level Harness RSI Engine (v3)
+# Bi-Level Harness Optimization & Textual Backpropagation (4-Loop RSI Engine v4 — Open-Ended Discovery Edition)
 
-A production-ready framework optimizing Recursive Self-Improvement (RSI) loops for Large Language Models. This architecture implements a specialized **Bi-Level Harness Optimization Engine** that safely manages self-directed evaluation, code execution, and programmatic self-updates over sequential validation cycles.
+Reference implementation for **Bi-Level Harness Optimization and Textual Backpropagation in Autonomous 4-Loop Recursive Self-Improvement Engines** (Gavares & Gavares, 2026).
 
----
+## What's New in v4 (Open-Ended Discovery Upgrade)
+1. **Autonomous Generative Challenger with Asymmetric ($P \neq NP$) Oracle Self-Verification (`curriculum/challenger.py`)**:
+   - Synthesizes problems across **5 discovery domains** (`dynamic_programming`, `graph_routing`, `combinatorial_optimization`, `numerical_stability`, `string_automata`) or via live **Gemini 2.5 Pro** synthesis (`synthesize_autonomous_benchmark()`).
+   - Prevents the **Hallucinated Oracle Trap** by passing every synthesized brute-force Reference Oracle $O_{\text{brute}}(x)$ through the **4-Layer Defense-in-Depth Firewall ($\mathcal{G}_0\text{--}\mathcal{G}_3$)** and verifying determinism, parameter liveness, and base-case consistency prior to benchmark admission.
+2. **True Topological DAG & Surgical AST Mutation (`meta/meta_architect.py` & `harness/inner_harness.py`)**:
+   - Loop 2 dynamically mutates the control-flow graph $G_{\text{DAG}} = (V, E)$ by injecting specialized verification and complexity-auditing nodes (`v_EdgeCaseFuzzer`, `v_ComplexityAuditor`, `v_SymmetryChecker`) into `dag_edges` and applying Python `ast.NodeTransformer` surgical AST patches (`SurgicalASTPatcher`).
+3. **Continuous Multi-Epoch MAP-Elites Evolution Loop (`main.py`)**:
+   - Run open-ended multi-generation discovery across domains and compute tiers with `--generations N`, tracking monotonic Pareto frontier climb ($\mathcal{A}_{\text{grid}}$), Verifier Blindspot decay ($\beta_{\text{blind}}$), and Loop 4 RLVR/GRPO Fano compression bounds ($\rho_\tau$).
 
-## 🚀 Core Innovations & AI Mathematical Framework
-
-Unlike standard iterative generation pipelines, this engine introduces advanced mathematical structures to prevent alignment drift and evaluation degradation during recursive self-improvement.
-
-### 🛡️ The KL Divergence Estimator Framework
-To maintain historical optimization bounds across self-modification intervals, the engine leverages specialized KL estimators to compute distribution shifts during alignment phases:
-*   **k1 / k2 / k3 Structural Regularization:** Dynamically enforces structural penalties during optimization steps to guarantee policy stability.
-*   **Bi-Level Harness Convergence Proofs:** Provides mathematical safeguards against catastrophic collapse or policy degradation across multi-generation self-improvement operations.
-
----
-
-## 🛠️ Architecture & Core Components
-
-The repository is organized cleanly at the root level to support containerized execution and standard validation tracking:
-
-*   📂 `rsi_engine/` — Core orchestration engine executing the 4-loop recursive self-improvement iterations.
-*   📂 `tests/` — Automated test suites establishing evaluation constraints before code integration.
-*   📂 `curriculum/` — Structured optimization metrics and dataset paths governing evaluation phases.
-*   📄 `main.py` — Primary runtime entry point initializing the recursive loops.
-*   📄 `Dockerfile` — Complete multi-stage build blueprint for isolated, stateless code execution.
-
----
-
-## ⚙️ Quick Start & Environment Configuration
-
-### Prerequisites
-*   Python 3.10+ or Docker
-*   A valid Google AI Studio Personal Access Token (or native environment endpoint keys)
-
-### 1. Environment Set Up
-Clone the repository and set your target execution keys:
-
+## Quickstart with Gemini (Free Tier / AI Studio)
 ```bash
-# Clone the repository
-git clone https://github.com
-cd Bilevel-Harness-Rsi-Engine
+export GEMINI_API_KEY="your-api-key-here"
 
-# Export environment variables for the Gemini API model configurations
-export GEMINI_API_KEY="your_personal_access_token_here"
+# Run a 5-generation open-ended discovery loop across all 5 algorithmic domains:
+python3 main.py --generations 5 --provider gemini \
+  --loop1-model gemini-2.5-flash \
+  --loop2-model gemini-2.5-pro \
+  --export-jsonl verified_trajectories.jsonl
 ```
 
-### 2. Local Execution
-Run the system natively using the primary entry point:
+## Offline Deterministic Verification Mode
 ```bash
-python main.py
+python3 main.py --generations 5 --provider mock
+python3 -m unittest discover -s tests -v
 ```
-
-### 3. Containerized Runtime (Recommended)
-To isolate programmatic self-modification routines safely within an isolated environment, run via Docker:
-```bash
-# Build the multi-stage environment
-docker build -t rsi-engine-v3 .
-
-# Run the runtime matrix safely isolated
-docker run -e GEMINI_API_KEY=$GEMINI_API_KEY rsi-engine-v3
-```
-
----
-
-## 🧪 Testing and Validation
-
-Validate optimization thresholds and component logic using the integrated test suite:
-```bash
-pytest tests/
-```
-
----
-
-## 📖 Citation & Academic Reference
-
-If you build upon this framework or utilize the bi-level harness optimization proofs in recursive self-improvement architectures, please cite the core engine work:
-
-```text
-Gavares, A. J. (2026). Mathematical Estimators and Bi-Level Harness Optimization Frameworks for Recursive Self-Improvement Engines. v3 Release Configuration.
-```
-

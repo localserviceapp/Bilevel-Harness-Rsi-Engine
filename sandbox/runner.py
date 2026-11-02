@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Any, Callable, List
+from typing import Any, Callable, List, Optional
 
 from sandbox.shadow_firewall import DefenseInDepthFirewall
 from schemas.diagnostic_contract import (
@@ -18,6 +18,7 @@ class ProblemInstance:
     shadow_inputs: List[Any]
     vault_inputs: List[Any]
     oracle_fn: Callable[[Any], Any]
+    oracle_source: Optional[str] = None
 
 
 def compute_pareto_efficiency_score(

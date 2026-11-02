@@ -38,12 +38,12 @@ def extract_json_object(text: str) -> Dict[str, Any]:
 
 class LLMClient:
     """
-    Unified Multi-Provider LLM Client for the 4-Loop RSI Engine.
+    Unified Multi-Provider LLM Client for the 4-Loop RSI Engine v4.
     Supports:
       - 'gemini': Google AI Studio REST API (GEMINI_API_KEY)
       - 'openai_compatible': DeepSeek / DeepInfra / OpenRouter / OpenAI (OPENAI_API_KEY, OPENAI_BASE_URL)
       - 'ollama': Local Ollama server (OLLAMA_BASE_URL, default http://localhost:11434)
-      - 'mock': Deterministic offline fallback
+      - 'mock': Deterministic offline discovery simulator
     """
 
     def __init__(

@@ -17,6 +17,9 @@ class SuspectNode(str, Enum):
     PLANNER = "v_Planner"
     CODER = "v_Coder"
     LOCAL_VERIFIER = "v_LocalVerifier"
+    EDGE_CASE_FUZZER = "v_EdgeCaseFuzzer"
+    COMPLEXITY_AUDITOR = "v_ComplexityAuditor"
+    SYMMETRY_CHECKER = "v_SymmetryChecker"
 
 
 class ASTPatchType(str, Enum):
@@ -25,6 +28,9 @@ class ASTPatchType(str, Enum):
     INJECT_BOUNDARY_GUARD = "INJECT_BOUNDARY_GUARD"
     REWRITE_ALGORITHMIC_DECOMPOSITION = "REWRITE_ALGORITHMIC_DECOMPOSITION"
     ELIMINATE_FORBIDDEN_REFLECTION = "ELIMINATE_FORBIDDEN_REFLECTION"
+    INSERT_EDGE_CASE_FUZZER_NODE = "INSERT_EDGE_CASE_FUZZER_NODE"
+    INSERT_COMPLEXITY_AUDITOR_NODE = "INSERT_COMPLEXITY_AUDITOR_NODE"
+    INSERT_SYMMETRY_CHECKER_NODE = "INSERT_SYMMETRY_CHECKER_NODE"
 
 
 class GateTelemetry(BaseModel):
@@ -70,6 +76,9 @@ class BackpropHint(BaseModel):
     verifier_blindspot_indicator: int = Field(..., ge=0, le=1, description="beta_blind in {0, 1}")
     node_credit_weights: Dict[str, float] = Field(
         default_factory=dict, description="Softmax distribution alpha_v over DAG nodes."
+    )
+    topological_mutation_applied: Optional[str] = Field(
+        default=None, description="Describes any new DAG node or edge inserted into G_DAG = (V, E)."
     )
 
     @model_validator(mode="after")
