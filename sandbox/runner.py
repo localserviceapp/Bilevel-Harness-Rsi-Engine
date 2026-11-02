@@ -120,7 +120,7 @@ class ThreeTierShadowMembrane:
         vault_pass_rate = round(sum(vault_outcomes) / max(1, len(vault_outcomes)), 4)
 
         p95_ms = round(max(sh_p95_ms, vault_p95_ms), 4)
-        mu_bar = round(p95_ms / self.mu_0, 4)
+        mu_bar = round(max(0.0, p95_ms - 1.0) / self.mu_0, 2)
 
         f_score = compute_pareto_efficiency_score(
             vault_pass_rate=vault_pass_rate,

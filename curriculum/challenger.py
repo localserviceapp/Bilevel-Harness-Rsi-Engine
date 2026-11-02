@@ -274,8 +274,8 @@ class StackelbergChallenger:
             for suite in (shadow_inputs, vault_inputs):
                 for _ in range(30):
                     if self.rng.random() < difficulty_ratio:
-                        # Empty list or high-magnitude cancellation sequence
-                        suite.append([])
+                        # High-magnitude IEEE-754 catastrophic cancellation sequence where naive left-to-right float addition yields 0.0 instead of 1.0
+                        suite.append([1e16, 1.0, -1e16])
                     else:
                         suite.append([1.25, 2.5, 3.75])
             return ProblemInstance(

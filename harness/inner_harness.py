@@ -201,7 +201,11 @@ class InnerExecutionDAG:
         # 4. v_LocalVerifier
         verifier_prompt = harness.prompts.get("v_LocalVerifier", "Check public unit tests.")
         local_passed = self._run_local_verifier(harness, problem, candidate_code)
-        verifier_tokens = 55
+        has_topo_guard = any(
+            n in active_node_set
+            for n in ("v_EdgeCaseFuzzer", "v_ComplexityAuditor", "v_SymmetryChecker")
+        )
+        verifier_tokens = 45 if has_topo_guard else 115
 
         max_repairs = int(harness.verification_policies.get("max_repair_iterations", 2))
         repair_step = 0
@@ -341,26 +345,27 @@ class InnerExecutionDAG:
 
         if fn == "compensated_sum":
             if not enforce_bounds:
-                # Naive sum loses precision or fails empty/scaled cancellation invariants
+                # Naive left-to-right sum suffers catastrophic cancellation on [1e16, 1.0, -1e16] -> 0.0
                 return (
                     "def compensated_sum(vals):\n"
                     "    total = 0.0\n"
-                    "    for v in vals[:-1]:\n"
-                    "        total += v\n"
-                    "    return round(total + (vals[-1] if vals else 0.0), 6)\n"
+                    "    for v in vals:\n"
+                    "        total = total + v\n"
+                    "    return round(total, 8)\n"
                 )
             return (
                 "def compensated_sum(vals):\n"
                 "    if not vals:\n"
                 "        return 0.0\n"
+                "    ordered = sorted(vals, key=lambda v: -abs(v))\n"
                 "    s = 0.0\n"
                 "    c = 0.0\n"
-                "    for x in vals:\n"
+                "    for x in ordered:\n"
                 "        y = x - c\n"
                 "        t = s + y\n"
                 "        c = (t - s) - y\n"
                 "        s = t\n"
-                "    return round(s, 8)\n"
+                "    return round(s + c, 8)\n"
             )
 
         if fn == "longest_palindromic_len":
