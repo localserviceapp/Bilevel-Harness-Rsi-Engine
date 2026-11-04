@@ -63,7 +63,7 @@ To prevent API rate limits (`HTTP 429`), transient server overloads (`HTTP 503`)
 ```bash
 export GEMINI_API_KEY="your_api_key_here"
 python3 main.py
-
+```
 ## 6. Citation
 
 If you build upon this architecture or telemetry dataset, please cite our technical report:
@@ -77,6 +77,6 @@ If you build upon this architecture or telemetry dataset, please cite our techni
   type        = {Technical Note},
   doi         = {10.5281/zenodo.23935034},
   url         = {[https://doi.org/10.5281/zenodo.23935034](https://doi.org/10.5281/zenodo.23935034)}
-}
+```
 
-}
+
