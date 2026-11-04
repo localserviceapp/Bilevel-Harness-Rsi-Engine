@@ -1,254 +1,248 @@
-import json
 import os
-import re
-import urllib.error
+import json
+import time
 import urllib.request
-from dataclasses import dataclass
-from typing import Any, Dict, Optional
-
-
-@dataclass
-class LLMResponse:
-    text: str
-    prompt_tokens: int
-    completion_tokens: int
-    total_tokens: int
-    model: str
-    provider: str
-
-
-def extract_python_code(text: str) -> str:
-    """Extracts executable Python source code from markdown fences or raw LLM output."""
-    fenced = re.findall(r"```(?:python|py)?\s*\n(.*?)```", text, flags=re.DOTALL | re.IGNORECASE)
-    if fenced:
-        return fenced[-1].strip() + "\n"
-    return text.strip() + "\n"
-
-
-def extract_json_object(text: str) -> Dict[str, Any]:
-    """Extracts a JSON object from markdown fences or raw text."""
-    fenced = re.findall(r"```(?:json)?\s*\n(.*?)```", text, flags=re.DOTALL | re.IGNORECASE)
-    candidate = fenced[-1].strip() if fenced else text.strip()
-    start = candidate.find("{")
-    end = candidate.rfind("}")
-    if start != -1 and end != -1 and end > start:
-        candidate = candidate[start : end + 1]
-    return json.loads(candidate)
+import urllib.error
+from typing import Optional, List, Dict, Any
 
 
 class LLMClient:
     """
-    Unified Multi-Provider LLM Client for the 4-Loop RSI Engine v4.
-    Supports:
-      - 'gemini': Google AI Studio REST API (GEMINI_API_KEY)
-      - 'openai_compatible': DeepSeek / DeepInfra / OpenRouter / OpenAI (OPENAI_API_KEY, OPENAI_BASE_URL)
-      - 'ollama': Local Ollama server (OLLAMA_BASE_URL, default http://localhost:11434)
-      - 'mock': Deterministic offline discovery simulator
+    Resilient Multi-Model LLM Client with sticky Gemini Flash rotation,
+    automatic 404 endpoint blacklisting, and exponential backoff on 429/503 limits.
     """
+
+    DEFAULT_GEMINI_POOL = [
+        "gemini-3.8-flash",
+        "gemini-3.7-flash",
+        "gemini-3.6-flash",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
+        "gemini-2.0-flash",
+        "gemini-flash-latest",
+    ]
 
     def __init__(
         self,
-        provider: str = "auto",
-        loop1_model: str = "gemini-2.5-flash",
-        loop2_model: str = "gemini-2.5-pro",
+        provider: str = "gemini",
+        model: str = "gemini-3.6-flash",
+        api_key: Optional[str] = None,
+        base_url: Optional[str] = None,
         temperature: float = 0.2,
-        timeout_sec: float = 30.0,
+        max_tokens: int = 4096,
+        timeout: int = 180,
+        **kwargs: Any,
     ):
-        self.gemini_api_key = os.environ.get("GEMINI_API_KEY", "").strip()
-        self.openai_api_key = os.environ.get("OPENAI_API_KEY", "").strip()
-        self.openai_base_url = os.environ.get("OPENAI_BASE_URL", "https://api.deepseek.com/v1").rstrip("/")
-        self.ollama_base_url = os.environ.get("OLLAMA_BASE_URL", "http://localhost:11434").rstrip("/")
-
-        if provider == "auto":
-            if self.gemini_api_key:
-                self.provider = "gemini"
-            elif self.openai_api_key:
-                self.provider = "openai_compatible"
-            else:
-                self.provider = "mock"
-        else:
-            self.provider = provider
-
-        self.loop1_model = loop1_model
-        self.loop2_model = loop2_model
+        self.provider = (provider or os.environ.get("LLM_PROVIDER", "gemini")).lower()
+        self.model = model or os.environ.get("LLM_MODEL", "gemini-3.6-flash")
+        self.api_key = (
+            api_key
+            or os.environ.get("GEMINI_API_KEY")
+            or os.environ.get("GOOGLE_API_KEY")
+            or os.environ.get("OPENAI_API_KEY")
+            or ""
+        )
+        self.base_url = base_url or os.environ.get("LLM_BASE_URL")
         self.temperature = temperature
-        self.timeout_sec = timeout_sec
+        self.max_tokens = max_tokens
+        self.timeout = timeout
 
-    @property
-    def is_live(self) -> bool:
-        return self.provider in {"gemini", "openai_compatible", "ollama"}
+        # Build sticky rotation pool with requested model prioritized first
+        self.model_pool: List[str] = []
+        if self.model:
+            self.model_pool.append(self.model)
+        for m in self.DEFAULT_GEMINI_POOL:
+            if m not in self.model_pool:
+                self.model_pool.append(m)
+
+        self.blacklisted_models: set = set()
+        self.active_model_idx: int = 0
 
     def generate(
         self,
         prompt: str,
-        system_instruction: Optional[str] = None,
-        model: Optional[str] = None,
-        json_mode: bool = False,
-    ) -> LLMResponse:
-        target_model = model or self.loop1_model
+        system_prompt: Optional[str] = None,
+        temperature: Optional[float] = None,
+        max_tokens: Optional[int] = None,
+        **kwargs: Any,
+    ) -> str:
+        temp = self.temperature if temperature is None else temperature
+        tokens = self.max_tokens if max_tokens is None else max_tokens
+
         if self.provider == "gemini":
-            return self._call_gemini(prompt, system_instruction, target_model, json_mode)
-        if self.provider == "openai_compatible":
-            return self._call_openai_compatible(prompt, system_instruction, target_model, json_mode)
-        if self.provider == "ollama":
-            return self._call_ollama(prompt, system_instruction, target_model, json_mode)
-        return self._call_mock(prompt, system_instruction, target_model)
+            return self._call_gemini(
+                prompt=prompt,
+                system_prompt=system_prompt,
+                temperature=temp,
+                max_tokens=tokens,
+            )
+        elif self.provider in ("openai", "openai_compatible"):
+            return self._call_openai_compatible(
+                prompt=prompt,
+                system_prompt=system_prompt,
+                temperature=temp,
+                max_tokens=tokens,
+            )
+        elif self.provider == "ollama":
+            return self._call_ollama(
+                prompt=prompt,
+                system_prompt=system_prompt,
+                temperature=temp,
+                max_tokens=tokens,
+            )
+        else:
+            return self._call_gemini(
+                prompt=prompt,
+                system_prompt=system_prompt,
+                temperature=temp,
+                max_tokens=tokens,
+            )
 
     def _call_gemini(
         self,
         prompt: str,
-        system_instruction: Optional[str],
-        model: str,
-        json_mode: bool,
-    ) -> LLMResponse:
-        if not self.gemini_api_key:
-            raise RuntimeError("GEMINI_API_KEY environment variable is not set.")
+        system_prompt: Optional[str] = None,
+        temperature: float = 0.2,
+        max_tokens: int = 4096,
+    ) -> str:
+        if not self.api_key:
+            raise RuntimeError("Missing GEMINI_API_KEY environment variable.")
 
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={self.gemini_api_key}"
-        payload: Dict[str, Any] = {
-            "contents": [{"role": "user", "parts": [{"text": prompt}]}],
-            "generationConfig": {
-                "temperature": self.temperature,
-            },
-        }
-        if json_mode:
-            payload["generationConfig"]["responseMimeType"] = "application/json"
-        if system_instruction:
-            payload["systemInstruction"] = {"parts": [{"text": system_instruction}]}
+        available = [m for m in self.model_pool if m not in self.blacklisted_models]
+        if not available:
+            # Reset blacklist if all models were exhausted
+            self.blacklisted_models.clear()
+            available = list(self.model_pool)
 
-        req = urllib.request.Request(
-            url,
-            data=json.dumps(payload).encode("utf-8"),
-            headers={"Content-Type": "application/json"},
-            method="POST",
-        )
-        with urllib.request.urlopen(req, timeout=self.timeout_sec) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
+        max_cycles = 3
+        last_error: Optional[Exception] = None
 
-        candidates = data.get("candidates", [])
-        text = ""
-        if candidates:
-            parts = candidates[0].get("content", {}).get("parts", [])
-            text = "".join(p.get("text", "") for p in parts)
+        for cycle in range(max_cycles):
+            for offset in range(len(available)):
+                idx = (self.active_model_idx + offset) % len(available)
+                candidate_model = available[idx]
+                if candidate_model in self.blacklisted_models:
+                    continue
 
-        usage = data.get("usageMetadata", {})
-        prompt_tok = int(usage.get("promptTokenCount", max(1, len(prompt) // 4)))
-        comp_tok = int(usage.get("candidatesTokenCount", max(1, len(text) // 4)))
-        total_tok = int(usage.get("totalTokenCount", prompt_tok + comp_tok))
+                url = (
+                    f"https://generativelanguage.googleapis.com/v1beta/models/"
+                    f"{candidate_model}:generateContent?key={self.api_key}"
+                )
 
-        return LLMResponse(
-            text=text,
-            prompt_tokens=prompt_tok,
-            completion_tokens=comp_tok,
-            total_tokens=total_tok,
-            model=model,
-            provider="gemini",
+                full_prompt = (
+                    f"{system_prompt}\n\n{prompt}" if system_prompt else prompt
+                )
+                payload: Dict[str, Any] = {
+                    "contents": [{"parts": [{"text": full_prompt}]}],
+                    "generationConfig": {
+                        "temperature": temperature,
+                        "maxOutputTokens": max_tokens,
+                    },
+                }
+
+                data = json.dumps(payload).encode("utf-8")
+                req = urllib.request.Request(
+                    url,
+                    data=data,
+                    headers={"Content-Type": "application/json"},
+                    method="POST",
+                )
+
+                try:
+                    with urllib.request.urlopen(req, timeout=self.timeout) as resp:
+                        body = json.loads(resp.read().decode("utf-8"))
+                        candidates = body.get("candidates", [])
+                        if candidates:
+                            parts = (
+                                candidates[0]
+                                .get("content", {})
+                                .get("parts", [])
+                            )
+                            text = "".join(p.get("text", "") for p in parts)
+                            if text:
+                                # Lock sticky pointer onto working model
+                                self.active_model_idx = idx
+                                return text
+                except urllib.error.HTTPError as e:
+                    last_error = e
+                    if e.code == 404:
+                        # Permanently blacklist unavailable model endpoint
+                        self.blacklisted_models.add(candidate_model)
+                        continue
+                    elif e.code in (429, 500, 502, 503, 504):
+                        # Rate limit or transient overload: rotate immediately
+                        time.sleep(min(2 ** cycle, 8))
+                        continue
+                    else:
+                        continue
+                except Exception as e:
+                    last_error = e
+                    time.sleep(1.5)
+                    continue
+
+            # Backoff between full pool sweeps
+            time.sleep(min(3 * (2 ** cycle), 15))
+
+        raise RuntimeError(
+            f"All Gemini models in rotation failed after {max_cycles} sweeps. "
+            f"Last error: {last_error}"
         )
 
     def _call_openai_compatible(
         self,
         prompt: str,
-        system_instruction: Optional[str],
-        model: str,
-        json_mode: bool,
-    ) -> LLMResponse:
-        if not self.openai_api_key:
-            raise RuntimeError("OPENAI_API_KEY environment variable is not set.")
-
-        url = f"{self.openai_base_url}/chat/completions"
+        system_prompt: Optional[str] = None,
+        temperature: float = 0.2,
+        max_tokens: int = 4096,
+    ) -> str:
+        url = self.base_url or "https://api.openai.com/v1/chat/completions"
         messages = []
-        if system_instruction:
-            messages.append({"role": "system", "content": system_instruction})
+        if system_prompt:
+            messages.append({"role": "system", "content": system_prompt})
         messages.append({"role": "user", "content": prompt})
 
-        payload: Dict[str, Any] = {
-            "model": model,
+        payload = {
+            "model": self.model,
             "messages": messages,
-            "temperature": self.temperature,
+            "temperature": temperature,
+            "max_tokens": max_tokens,
         }
-        if json_mode:
-            payload["response_format"] = {"type": "json_object"}
-
         req = urllib.request.Request(
             url,
             data=json.dumps(payload).encode("utf-8"),
             headers={
                 "Content-Type": "application/json",
-                "Authorization": f"Bearer {self.openai_api_key}",
+                "Authorization": f"Bearer {self.api_key}",
             },
             method="POST",
         )
-        with urllib.request.urlopen(req, timeout=self.timeout_sec) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-
-        text = data["choices"][0]["message"]["content"]
-        usage = data.get("usage", {})
-        prompt_tok = int(usage.get("prompt_tokens", max(1, len(prompt) // 4)))
-        comp_tok = int(usage.get("completion_tokens", max(1, len(text) // 4)))
-        total_tok = int(usage.get("total_tokens", prompt_tok + comp_tok))
-
-        return LLMResponse(
-            text=text,
-            prompt_tokens=prompt_tok,
-            completion_tokens=comp_tok,
-            total_tokens=total_tok,
-            model=model,
-            provider="openai_compatible",
-        )
+        with urllib.request.urlopen(req, timeout=self.timeout) as resp:
+            body = json.loads(resp.read().decode("utf-8"))
+            return body["choices"][0]["message"]["content"]
 
     def _call_ollama(
         self,
         prompt: str,
-        system_instruction: Optional[str],
-        model: str,
-        json_mode: bool,
-    ) -> LLMResponse:
-        url = f"{self.ollama_base_url}/api/generate"
-        payload: Dict[str, Any] = {
-            "model": model,
-            "prompt": prompt,
+        system_prompt: Optional[str] = None,
+        temperature: float = 0.2,
+        max_tokens: int = 4096,
+    ) -> str:
+        url = self.base_url or "http://localhost:11434/api/generate"
+        full_prompt = f"{system_prompt}\n\n{prompt}" if system_prompt else prompt
+        payload = {
+            "model": self.model,
+            "prompt": full_prompt,
             "stream": False,
-            "options": {"temperature": self.temperature},
+            "options": {"temperature": temperature, "num_predict": max_tokens},
         }
-        if system_instruction:
-            payload["system"] = system_instruction
-        if json_mode:
-            payload["format"] = "json"
-
         req = urllib.request.Request(
             url,
             data=json.dumps(payload).encode("utf-8"),
             headers={"Content-Type": "application/json"},
             method="POST",
         )
-        with urllib.request.urlopen(req, timeout=self.timeout_sec) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-
-        text = data.get("response", "")
-        prompt_tok = int(data.get("prompt_eval_count", max(1, len(prompt) // 4)))
-        comp_tok = int(data.get("eval_count", max(1, len(text) // 4)))
-
-        return LLMResponse(
-            text=text,
-            prompt_tokens=prompt_tok,
-            completion_tokens=comp_tok,
-            total_tokens=prompt_tok + comp_tok,
-            model=model,
-            provider="ollama",
-        )
-
-    def _call_mock(
-        self,
-        prompt: str,
-        system_instruction: Optional[str],
-        model: str,
-    ) -> LLMResponse:
-        prompt_tok = max(10, len(prompt) // 4)
-        return LLMResponse(
-            text="MOCK_RESPONSE",
-            prompt_tokens=prompt_tok,
-            completion_tokens=45,
-            total_tokens=prompt_tok + 45,
-            model=model,
-            provider="mock",
-        )
+        with urllib.request.urlopen(req, timeout=self.timeout) as resp:
+            body = json.loads(resp.read().decode("utf-8"))
+            return body.get("response", "")
