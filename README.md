@@ -64,12 +64,19 @@ To prevent API rate limits (`HTTP 429`), transient server overloads (`HTTP 503`)
 export GEMINI_API_KEY="your_api_key_here"
 python3 main.py
 
+## 6. Citation
+
+If you build upon this architecture or telemetry dataset, please cite our technical report:
+
+```latex
 @techreport{gavares2026bilevel,
-  title       = {Bi-Level Harness Optimization and Textual Backpropagation in Autonomous 4-Loop Recursive Self-Improvement Engines},
   author      = {Gavares, Yasemin and Gavares, Alexander},
-  year        = {2026},
+  title       = {Bi-Level Harness Optimization and Textual Backpropagation in Autonomous 4-Loop Recursive Self-Improvement Engines},
   institution = {Autonomous Agent Architecture Research Group / Local Service App Inc / Kronoz Technologies LLC},
+  year        = {2026},
   type        = {Technical Note},
   doi         = {10.5281/zenodo.23935034},
   url         = {[https://doi.org/10.5281/zenodo.23935034](https://doi.org/10.5281/zenodo.23935034)}
+}
+
 }
