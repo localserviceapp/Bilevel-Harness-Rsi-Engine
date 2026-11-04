@@ -56,10 +56,14 @@ To prevent API rate limits (`HTTP 429`), transient server overloads (`HTTP 503`)
 2. **Automatic 404 Blacklisting:** Immediately prunes unavailable model identifiers from the active rotation pool.
 3. **Exponential Backoff Sweep:** Rotates seamlessly across fallback Flash endpoints with bounded exponential backoff and a 180-second reasoning socket timeout.
 
-### Quickstart
+---
+
+## 5. Quickstart
+
 ```bash
 export GEMINI_API_KEY="your_api_key_here"
 python3 main.py
+
 @techreport{gavares2026bilevel,
   title       = {Bi-Level Harness Optimization and Textual Backpropagation in Autonomous 4-Loop Recursive Self-Improvement Engines},
   author      = {Gavares, Yasemin and Gavares, Alexander},
