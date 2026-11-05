@@ -1,0 +1,114 @@
+{
+  "benchmark": "Live GPU Unbounded RSI Synthesis & Verification (Generations 36-42)",
+  "model_id": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+  "device": "cuda",
+  "lora_adapter_loaded": true,
+  "compositional_metamorphic_pass_rate": "4/4",
+  "swe_evo_multifile_commit_rate": "2/2",
+  "live_gen36_39_results": [
+    {
+      "passed": true,
+      "tier1_public_passed": true,
+      "tier2_shadow_passed": true,
+      "hypothesis_trials_executed": 100,
+      "beta_blindspot_detected": 0,
+      "failure_taxonomy": "NONE",
+      "detail": "OK",
+      "latency_ms": 962.6508,
+      "problem_id": "gen36_net_burst_score_live_gpu",
+      "gpu_tokens": 76,
+      "gpu_latency_ms": 14206.79,
+      "synthesized_code": "from stdlib_primitives import kahan_max_subarray, weighted_mismatch_cost\n\ndef net_burst_score(bursts: list[float], s1: str, s2: str, penalties: list[float]) -> float:\n    return kahan_max_subarray(bursts) - weighted_mismatch_cost(s1, s2, penalties)"
+    },
+    {
+      "passed": true,
+      "tier1_public_passed": true,
+      "tier2_shadow_passed": true,
+      "hypothesis_trials_executed": 100,
+      "beta_blindspot_detected": 0,
+      "failure_taxonomy": "NONE",
+      "detail": "OK",
+      "latency_ms": 120.7103,
+      "problem_id": "gen37_authenticated_bandwidth_live_gpu",
+      "gpu_tokens": 117,
+      "gpu_latency_ms": 15034.0,
+      "synthesized_code": "from stdlib_primitives import dfa_weighted_transitions, widest_path_capacity, count_target_subseq\n\ndef authenticated_route_bandwidth(adj: dict, route: list[int], token: str, c0: int, c1: int, log: str, sig: str) -> float:\n    if dfa_weighted_transitions(token, c0, c1) == -1:\n        return 0.0\n    else:\n        return float(widest_path_capacity(adj, route) * count_target_subseq(log, sig))"
+    },
+    {
+      "passed": true,
+      "tier1_public_passed": true,
+      "tier2_shadow_passed": true,
+      "hypothesis_trials_executed": 100,
+      "beta_blindspot_detected": 0,
+      "failure_taxonomy": "NONE",
+      "detail": "OK",
+      "latency_ms": 104.4508,
+      "problem_id": "gen38_capacity_margin_live_gpu",
+      "gpu_tokens": 77,
+      "gpu_latency_ms": 6687.57,
+      "synthesized_code": "from stdlib_primitives import widest_path_capacity, weighted_mismatch_cost\n\ndef capacity_mismatch_margin(adj: dict, route: list[int], s1: str, s2: str, weights: list[float]) -> float:\n    return float(widest_path_capacity(adj, route) - weighted_mismatch_cost(s1, s2, weights))"
+    },
+    {
+      "passed": true,
+      "tier1_public_passed": true,
+      "tier2_shadow_passed": true,
+      "hypothesis_trials_executed": 100,
+      "beta_blindspot_detected": 0,
+      "failure_taxonomy": "NONE",
+      "detail": "OK",
+      "latency_ms": 500.2431,
+      "problem_id": "gen39_bidirectional_subseq_live_gpu",
+      "gpu_tokens": 87,
+      "gpu_latency_ms": 7153.28,
+      "synthesized_code": "from stdlib_primitives import count_target_subseq, kahan_max_subarray\n\ndef bidirectional_subseq_score(text: str, pat: str, gains: list[float]) -> float:\n    fwd = count_target_subseq(text, pat)\n    rev = count_target_subseq(text[::-1], pat[::-1])\n    return (fwd + rev) * kahan_max_subarray(gains)"
+    }
+  ],
+  "live_gen41_42_results": [
+    {
+      "patch_id": "gen41_live_gpu_2file_patch",
+      "files_modified": [
+        "pkg_normalizer",
+        "pkg_pipeline"
+      ],
+      "committed": true,
+      "rolled_back": false,
+      "gate0_passed": true,
+      "tier1_passed": true,
+      "tier2_passed": true,
+      "hypothesis_trials": 100,
+      "delta_ast": 0.3727,
+      "detail": "COMMITTED",
+      "latency_ms": 124.9263,
+      "gpu_tokens": 140,
+      "gpu_latency_ms": 15973.13,
+      "synthesized_patch": {
+        "pkg_normalizer": "from stdlib_primitives import kahan_max_subarray\n\ndef peak_signal(series: list[float], scale: float) -> float:\n    return float(kahan_max_subarray(series) * float(scale))",
+        "pkg_pipeline": "import pkg_normalizer\nimport pkg_scorer\n\ndef evaluate_telemetry_frame(series: list[float], scale: float, adj: dict, route: list[int], s1: str, s2: str, weights: list[float]) -> float:\n    return pkg_normalizer.peak_signal(series, scale) + pkg_scorer.route_health_score(adj, route, s1, s2, weights) * float(scale)"
+      }
+    },
+    {
+      "patch_id": "gen42_live_gpu_3file_patch",
+      "files_modified": [
+        "pkg_normalizer",
+        "pkg_scorer",
+        "pkg_pipeline"
+      ],
+      "committed": true,
+      "rolled_back": false,
+      "gate0_passed": true,
+      "tier1_passed": true,
+      "tier2_passed": true,
+      "hypothesis_trials": 100,
+      "delta_ast": 0.5652,
+      "detail": "COMMITTED",
+      "latency_ms": 119.9904,
+      "gpu_tokens": 226,
+      "gpu_latency_ms": 19466.99,
+      "synthesized_patch": {
+        "pkg_normalizer": "from stdlib_primitives import kahan_max_subarray\n\ndef peak_signal(series: list[float], scale: float) -> float:\n    return float(kahan_max_subarray(series) * float(scale))",
+        "pkg_scorer": "from stdlib_primitives import weighted_mismatch_cost, widest_path_capacity\n\ndef route_health_score(adj: dict, route: list[int], s1: str, s2: str, weights: list[float], scale: float = 1.0) -> float:\n    return (widest_path_capacity(adj, route) - weighted_mismatch_cost(s1, s2, weights)) * float(scale)",
+        "pkg_pipeline": "import pkg_normalizer\nimport pkg_scorer\n\ndef evaluate_telemetry_frame(series: list[float], scale: float, adj: dict, route: list[int], s1: str, s2: str, weights: list[float]) -> float:\n    return pkg_normalizer.peak_signal(series, scale) + pkg_scorer.route_health_score(adj, route, s1, s2, weights, scale)"
+      }
+    }
+  ]
+}
