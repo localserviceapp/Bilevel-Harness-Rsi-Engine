@@ -1,0 +1,117 @@
+{
+  "benchmark": "Macro-Epoch 3: Orthogonal LoRA-MoE & Autonomous 4-Module Challenger (Generations 44-50)",
+  "orthogonal_subspace_telemetry": {
+    "lora_layers_projected": 196,
+    "mean_pre_projection_overlap": 0.031854,
+    "max_post_projection_frobenius_residual": 5.817707024533648e-19,
+    "mean_post_projection_frobenius_residual": 4.430859701049521e-19,
+    "catastrophic_forgetting_rate": 0.0
+  },
+  "backward_retention_pass_rate": "2/2 (100.0% - Zero Catastrophic Forgetting)",
+  "live_multifile_commits": "2/2 (100.0% across 2-module & 4-module patches)",
+  "mean_multifile_delta_ast": 0.6692,
+  "circular_dependency_intercepts": "1/1 (100.0% Gate-0 Cycle Detection & Atomic Rollback)",
+  "routing_log": [
+    {
+      "problem_id": "gen44_retention_audit_kahan_kadane",
+      "selected_expert": "hybrid_orthogonal_moe_mixture",
+      "gate_weights": {
+        "delta_theta_1": 0.5,
+        "delta_theta_2_orth": 0.5
+      }
+    },
+    {
+      "problem_id": "gen45_retention_audit_authenticated_bandwidth",
+      "selected_expert": "hybrid_orthogonal_moe_mixture",
+      "gate_weights": {
+        "delta_theta_1": 0.5,
+        "delta_theta_2_orth": 0.5
+      }
+    },
+    {
+      "problem_id": "gen46_live_moe_2module_dfa_guard_patch",
+      "selected_expert": "expert2_swe_evo_orthogonal_lora",
+      "gate_weights": {
+        "delta_theta_1": 0.15,
+        "delta_theta_2_orth": 0.85
+      }
+    },
+    {
+      "problem_id": "gen48_live_moe_4module_fullstack_patch",
+      "selected_expert": "expert2_swe_evo_orthogonal_lora",
+      "gate_weights": {
+        "delta_theta_1": 0.15,
+        "delta_theta_2_orth": 0.85
+      }
+    },
+    {
+      "problem_id": "gen50_adversarial_circular_import_regression_control",
+      "selected_expert": "expert2_swe_evo_orthogonal_lora",
+      "gate_weights": {
+        "delta_theta_1": 0.15,
+        "delta_theta_2_orth": 0.85
+      }
+    }
+  ],
+  "results": [
+    {
+      "patch_id": "gen46_live_moe_2module_dfa_guard_patch",
+      "files_modified": [
+        "pkg_router_guard",
+        "pkg_pipeline"
+      ],
+      "committed": true,
+      "rolled_back": false,
+      "gate0_passed": true,
+      "tier1_passed": true,
+      "tier2_passed": true,
+      "hypothesis_trials": 100,
+      "delta_ast": 0.6269,
+      "detail": "COMMITTED",
+      "latency_ms": 696.9893,
+      "moe_expert": "expert2_swe_evo_orthogonal_lora",
+      "gpu_tokens": 236,
+      "gpu_latency_ms": 21133.96
+    },
+    {
+      "patch_id": "gen48_live_moe_4module_fullstack_patch",
+      "files_modified": [
+        "pkg_normalizer",
+        "pkg_scorer",
+        "pkg_router_guard",
+        "pkg_pipeline"
+      ],
+      "committed": true,
+      "rolled_back": false,
+      "gate0_passed": true,
+      "tier1_passed": true,
+      "tier2_passed": true,
+      "hypothesis_trials": 100,
+      "delta_ast": 0.7114,
+      "detail": "COMMITTED",
+      "latency_ms": 189.6932,
+      "moe_expert": "expert2_swe_evo_orthogonal_lora",
+      "gpu_tokens": 362,
+      "gpu_latency_ms": 35993.15
+    },
+    {
+      "patch_id": "gen50_adversarial_circular_import_regression_control",
+      "files_modified": [
+        "pkg_normalizer",
+        "pkg_pipeline"
+      ],
+      "committed": false,
+      "rolled_back": true,
+      "gate0_passed": false,
+      "tier1_passed": false,
+      "tier2_passed": false,
+      "hypothesis_trials": 0,
+      "delta_ast": 1.0,
+      "detail": "Circular dependency detected in multi-file patch",
+      "latency_ms": 1.0788,
+      "moe_expert": "expert2_swe_evo_orthogonal_lora",
+      "gpu_tokens": 0,
+      "gpu_latency_ms": 0.0
+    }
+  ]
+}

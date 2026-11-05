@@ -1,4 +1,4 @@
-# Bi-Level Harness Optimization & Textual Backpropagation in Autonomous 4-Loop RSI Engines (`v6.0.0`)
+# Bi-Level Harness Optimization & Textual Backpropagation in Autonomous 4-Loop RSI Engines (`v6.1.0` — 50-Generation Closure)
 
 **Authors:** Yasemin Gavares & Alexander Gavares  
 **Affiliation:** Autonomous Agent Architecture Research Group — Local Service App Inc / Kronoz Technologies LLC  
@@ -6,15 +6,7 @@
 
 ---
 
-## Overview
-
-This repository contains the reference implementation, formal verification firewall, distilled LoRA telemetry, and multi-epoch empirical benchmarks for our **Autonomous 4-Loop Recursive Self-Improvement (RSI) Engine**.
-
-The architecture decouples fast inner-loop execution (**Loop 1**), outer-loop topological & AST meta-optimization (**Loop 2**), Stackelberg adversarial curriculum synthesis (**Loop 3**), and domain-indexed GRPO LoRA weight consolidation (**Loop 4**) behind a **4-Layer Defense-in-Depth Execution Firewall** ($\mathcal{G}_0 \circ \mathcal{G}_1 \circ \mathcal{G}_2 \circ \mathcal{G}_3$) and a **Three-Tiered Shadow Evaluation Membrane**.
-
----
-
-## Complete Empirical Validation Summary (Generations 1–43)
+## Complete Empirical Validation Summary (Generations 1–50)
 
 | Phase / Track | Generations | Core Milestone | Vault / Invariant Pass Rate | Key Physical Metric |
 | :--- | :---: | :--- | :---: | :--- |
@@ -24,20 +16,15 @@ The architecture decouples fast inner-loop execution (**Loop 1**), outer-loop to
 | **Step 1: Macro-Epoch 2 Closure** | Gen 31–35 | Zero-Shot Cross-Domain Hybrid Generalization ($T=0$) | **100.0%** (5/5 Unseen Hybrids) | **$0.0176\text{ ms}$** ($576,976\times$ Warm Speedup) |
 | **Step 2: Skill Crystallization** | Gen 36–38 | `stdlib_primitives.py` Halstead Gating & 2nd-Order Composition | **100.0%** (5/5 Admitted, 3/3 Composed) | $92.51\text{--}193.26$ Halstead Bits |
 | **Step 3: Live GPU Metamorphic** | Gen 36–40 | Live CUDA LoRA Synthesis + Oracle-Free Hypothesis Fuzzing | **100.0%** (400/400 Trials) | $89.3\text{ Tokens}$ Mean / **100%** Cheat Caught ($\beta_{\text{blind}}=1$) |
-| **Step 4: Live GPU `SWE-EVO`** | Gen 41–43 | Live CUDA LoRA Multi-File Patching & Atomic Rollback | **100.0%** (200/200 Trials, 2/2 Committed) | Mean Live $\bar{\Delta}_{\text{AST}} = 0.4690$ / **100%** Rollback |
+| **Step 4: Live GPU `SWE-EVO`** | Gen 41–43 | Live CUDA LoRA 3-Module Patching & Atomic Rollback | **100.0%** (200/200 Trials, 2/2 Committed) | Mean Live $\bar{\Delta}_{\text{AST}} = 0.4690$ / **100%** Rollback |
+| **Macro-Epoch 3: LoRA-MoE** | Gen 44–50 | 196-Layer QR Orthogonal LoRA-MoE & 4-Module Challenger | **100.0%** (2/2 Committed, **0.0%** Forgetting) | Residual $5.82\times 10^{-19}$ / $\bar{\Delta}_{\text{AST}} = 0.6692$ |
 
 ---
 
-## Repository Structure & Telemetry Artifacts
+## Quickstart: One-Command Reproducibility Suite
 
-* `bi_level_harness_engine_v6.pdf` / `Bi_level_harness_engine_v5.pdf`: Compiled Technical Report with theoretical proofs and Generations 1–43 live CUDA GPU empirical telemetry.
-* `harness/macro_epoch2_router.py`: Promoted Track-2 elite router (`OP_SPEC_HASH_MEMO_CACHE`) with Gate-0 AST verification and arity-adaptive invocation.
-* `harness/stdlib_primitives.py`: Verified skill library ($\mathcal{L}_{\text{tools}}$) automatically crystallized from Macro-Epoch 2 solutions.
-* `harness/skill_crystallizer.py`: Section 2.1 Halstead volume and Gate-0 modularity extractor ($\mathcal{K}_{\text{lib}}$).
-* `harness/metamorphic_verifier.py`: Tier-2 Hypothesis property-based fuzzer and oracle-free metamorphic relation verifier ($\mathcal{R}_{\text{meta}}$).
-* `harness/swe_evo_verifier.py`: Multi-file transactional AST dependency verifier, $\Delta_{\text{AST}}$ elasticity analyzer, and atomic rollback engine.
-* `macro_epoch2_closure_metrics.json`: Generations 31–35 zero-shot hybrid generalization telemetry.
-* `step2_crystallization_metrics.json`: Generations 36–38 skill crystallization and hierarchical composition telemetry.
-* `step3_metamorphic_metrics.json`: Generations 36–40 Hypothesis property-based fuzzing and reward-hack interception telemetry.
-* `step4_swe_evo_metrics.json`: Generations 41–43 multi-file `SWE-EVO` transactional evolution telemetry.
-* `live_gpu_unbounded_metrics.json`: Generations 36–42 live CUDA T4 GPU LoRA synthesis telemetry across 600 Hypothesis trials.
+Run the self-bootstrapping verification runner to validate all Gate-0 AST, Skill Library, Hypothesis Metamorphic, Multi-File `SWE-EVO`, and Orthogonal LoRA-MoE invariants:
+
+```bash
+python3 run_all_verifications.py
+
