@@ -1,0 +1,57 @@
+{
+  "step": "Step 4: Multi-File Repository Evolution (SWE-EVO) Transactional Verifier",
+  "valid_multifile_patches_committed": "2/2",
+  "defective_patches_rolled_back": "1/1",
+  "mean_committed_delta_ast": 0.4845,
+  "results": [
+    {
+      "patch_id": "gen41_multifile_scale_coherent_patch",
+      "files_modified": [
+        "pkg_normalizer",
+        "pkg_pipeline"
+      ],
+      "committed": true,
+      "rolled_back": false,
+      "gate0_passed": true,
+      "tier1_passed": true,
+      "tier2_passed": true,
+      "hypothesis_trials": 100,
+      "delta_ast": 0.2919,
+      "detail": "COMMITTED",
+      "latency_ms": 228.9766
+    },
+    {
+      "patch_id": "gen42_multifile_3module_dfa_guarded_patch",
+      "files_modified": [
+        "pkg_normalizer",
+        "pkg_scorer",
+        "pkg_pipeline"
+      ],
+      "committed": true,
+      "rolled_back": false,
+      "gate0_passed": true,
+      "tier1_passed": true,
+      "tier2_passed": true,
+      "hypothesis_trials": 100,
+      "delta_ast": 0.677,
+      "detail": "COMMITTED",
+      "latency_ms": 233.5863
+    },
+    {
+      "patch_id": "gen43_defective_crossfile_regression_control",
+      "files_modified": [
+        "pkg_normalizer",
+        "pkg_pipeline"
+      ],
+      "committed": false,
+      "rolled_back": true,
+      "gate0_passed": true,
+      "tier1_passed": true,
+      "tier2_passed": false,
+      "hypothesis_trials": 109,
+      "delta_ast": 1.0,
+      "detail": "Rolled back on Hypothesis trial 109: AssertionError",
+      "latency_ms": 292.8195
+    }
+  ]
+}
