@@ -75,12 +75,10 @@ where $G_{\text{DAG}}=(V,E)$ defines the multi-agent topological control flow, $
 
 \subsection{Capacity-Bounded Library Crystallization ($\mathcal{K}_{\text{lib}}$)}
 To prevent representation stagnation within fixed prompt spaces while preserving the finiteness of $\mathcal{S}_{\mathcal{H}}$, whenever a candidate $c$ achieves full Vault verification ($\mathcal{V}(\mathcal{H},p)=1$), the Meta-Architect applies an AST modularity extractor $\mathcal{K}_{\text{lib}}(T_{\text{AST}}(c))$ that identifies pure, stateless function subtrees $f_{\text{sub}}\subset T_{\text{AST}}(c)$ satisfying:
-\{
 \begin{multline}
 V_{\min}\le V_{\text{Halstead}}(f_{\text{sub}})\le V_{\max} \\
 \wedge\; \mathcal{G}_{1}\!\left(\mathcal{G}_{0}(f_{\text{sub}})\right) = \text{PASS}
 \end{multline}
-\}
 Extracted primitives are verified against synthesized Hypothesis invariants and admitted into $\mathcal{L}_{\text{tools}}$ (\texttt{stdlib\_\allowbreak primitives.py}) under a capacity bound $K_{\max}$ (evicting the lowest-utility primitive when $|\mathcal{L}_{\text{tools}}|=K_{\max}$). Because each primitive is token-bounded and $|\mathcal{L}_{\text{tools}}|\le K_{\max}$, the composite harness space $\mathcal{S}_{\mathcal{H}}$ remains strictly finite.
 
 \subsection{Physical Proxies for Scalability \& Maintainability}
