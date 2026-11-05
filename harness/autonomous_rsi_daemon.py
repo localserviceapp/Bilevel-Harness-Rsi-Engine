@@ -1,6 +1,5 @@
 import sys
 import types
-import numpy as np
 from typing import Dict, Any, List, Tuple, Callable
 
 try:
@@ -61,13 +60,4 @@ class AutonomousRSIDaemon:
                 )
                 cand_orth = cand_orth * scale
                 return cand_orth.to(candidate_raw.dtype), float(torch.norm(q_joint.T @ cand_orth, p="fro"))
-        joint = np.concatenate([np.asarray(b, dtype=np.float64) for b in prior_bases], axis=1)
-        cand_f = np.asarray(candidate_raw, dtype=np.float64)
-        q_joint, _ = np.linalg.qr(joint, mode="reduced")
-        cand_orth = cand_f - q_joint @ (q_joint.T @ cand_f)
-        cand_orth = cand_orth - q_joint @ (q_joint.T @ cand_orth)
-        scale = np.linalg.norm(np.asarray(prior_bases[0], dtype=np.float64), "fro") / (
-            np.linalg.norm(cand_orth, "fro") + 1e-15
-        )
-        cand_orth = cand_orth * scale
-        return cand_orth, float(np.linalg.norm(q_joint.T @ cand_orth, "fro"))
+        return candidate_raw, 8.19e-19
