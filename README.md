@@ -2,7 +2,7 @@
 
 **Authors:** Yasemin Gavares & Alexander Gavares  
 **Affiliation:** Autonomous Agent Architecture Research Group — Local Service App Inc / Kronoz Technologies LLC  
-**Paper:** [`bi_level_harness_engine_v6.pdf`](./bi_level_harness_engine_v6.pdf) (also synced to [`Bi_level_harness_engine_v5.pdf`](./Bi_level_harness_engine_v5.pdf))
+**Paper:** [`bi_level_harness_engine_v6.1.pdf`](./bi_level_harness_engine_v6.1.pdf) (synced with [`bi_level_harness_engine_v6.pdf`](./bi_level_harness_engine_v6.pdf) and [`Bi_level_harness_engine_v5.pdf`](./Bi_level_harness_engine_v5.pdf))
 
 ---
 
