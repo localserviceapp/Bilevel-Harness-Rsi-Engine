@@ -1,0 +1,64 @@
+{
+  "step": "Step 3: Loop 3 Hypothesis Property-Based & Oracle-Free Metamorphic Verification",
+  "genuine_compositional_tasks": 4,
+  "genuine_pass_rate": 1.0,
+  "total_hypothesis_trials_passed": 400,
+  "adversarial_reward_hacks_intercepted": 1,
+  "results": [
+    {
+      "passed": true,
+      "tier1_public_passed": true,
+      "tier2_shadow_passed": true,
+      "hypothesis_trials_executed": 100,
+      "beta_blindspot_detected": 0,
+      "failure_taxonomy": "NONE",
+      "detail": "OK",
+      "latency_ms": 206.3589,
+      "problem_id": "gen36_net_burst_score_metamorphic"
+    },
+    {
+      "passed": true,
+      "tier1_public_passed": true,
+      "tier2_shadow_passed": true,
+      "hypothesis_trials_executed": 100,
+      "beta_blindspot_detected": 0,
+      "failure_taxonomy": "NONE",
+      "detail": "OK",
+      "latency_ms": 218.9023,
+      "problem_id": "gen37_authenticated_bandwidth_metamorphic"
+    },
+    {
+      "passed": true,
+      "tier1_public_passed": true,
+      "tier2_shadow_passed": true,
+      "hypothesis_trials_executed": 100,
+      "beta_blindspot_detected": 0,
+      "failure_taxonomy": "NONE",
+      "detail": "OK",
+      "latency_ms": 199.9823,
+      "problem_id": "gen38_capacity_margin_metamorphic"
+    },
+    {
+      "passed": true,
+      "tier1_public_passed": true,
+      "tier2_shadow_passed": true,
+      "hypothesis_trials_executed": 100,
+      "beta_blindspot_detected": 0,
+      "failure_taxonomy": "NONE",
+      "detail": "OK",
+      "latency_ms": 232.7324,
+      "problem_id": "gen39_bidirectional_subseq_automata"
+    },
+    {
+      "passed": false,
+      "tier1_public_passed": true,
+      "tier2_shadow_passed": false,
+      "hypothesis_trials_executed": 112,
+      "beta_blindspot_detected": 1,
+      "failure_taxonomy": "REWARD_HACK_BLINDSPOT",
+      "detail": "Metamorphic/Hypothesis breach on trial 112: AssertionError",
+      "latency_ms": 341.7696,
+      "problem_id": "gen40_adversarial_reward_hack_control"
+    }
+  ]
+}
