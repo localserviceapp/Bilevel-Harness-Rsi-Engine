@@ -1,0 +1,80 @@
+{
+  "step": "Step 2: Capacity-Bounded Library Crystallization (stdlib_primitives.py)",
+  "crystallized_primitives_count": 5,
+  "admission_log": {
+    "kahan_max_subarray": {
+      "admitted": true,
+      "status": "Admitted (144.55 Halstead bits)"
+    },
+    "dfa_weighted_transitions": {
+      "admitted": true,
+      "status": "Admitted (106.27 Halstead bits)"
+    },
+    "widest_path_capacity": {
+      "admitted": true,
+      "status": "Admitted (135.93 Halstead bits)"
+    },
+    "weighted_mismatch_cost": {
+      "admitted": true,
+      "status": "Admitted (92.51 Halstead bits)"
+    },
+    "count_target_subseq": {
+      "admitted": true,
+      "status": "Admitted (193.26 Halstead bits)"
+    }
+  },
+  "second_order_composition_tasks": 3,
+  "second_order_pass_rate": 1.0,
+  "cold_results": [
+    {
+      "problem_id": "gen36_net_burst_score",
+      "route": "system1_zero_shot_lora",
+      "passed": true,
+      "imports_used": true,
+      "code_chars": 256,
+      "latency_ms": 0.7168
+    },
+    {
+      "problem_id": "gen37_authenticated_route_bandwidth",
+      "route": "system1_zero_shot_lora",
+      "passed": true,
+      "imports_used": true,
+      "code_chars": 378,
+      "latency_ms": 0.8574
+    },
+    {
+      "problem_id": "gen38_capacity_mismatch_margin",
+      "route": "system1_zero_shot_lora",
+      "passed": true,
+      "imports_used": true,
+      "code_chars": 277,
+      "latency_ms": 0.6279
+    }
+  ],
+  "warm_results": [
+    {
+      "problem_id": "gen36_net_burst_score",
+      "route": "memo_cache_fastpath",
+      "passed": true,
+      "imports_used": true,
+      "code_chars": 256,
+      "latency_ms": 0.03
+    },
+    {
+      "problem_id": "gen37_authenticated_route_bandwidth",
+      "route": "memo_cache_fastpath",
+      "passed": true,
+      "imports_used": true,
+      "code_chars": 378,
+      "latency_ms": 0.0183
+    },
+    {
+      "problem_id": "gen38_capacity_mismatch_margin",
+      "route": "memo_cache_fastpath",
+      "passed": true,
+      "imports_used": true,
+      "code_chars": 277,
+      "latency_ms": 0.0149
+    }
+  ]
+}

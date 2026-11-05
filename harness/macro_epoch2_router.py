@@ -16,10 +16,7 @@ FORBIDDEN_SYMBOLS = {
 }
 
 class MacroEpoch2Router:
-    """
-    Promoted Track-2 Elite Topology (OP_SPEC_HASH_MEMO_CACHE) coupled with
-    Section 7 Dynamic Adapter Routing (System-1 LoRA -> Frozen Base Trunk -> System-2 DAG).
-    """
+    """Promoted Track-2 Elite Topology (OP_SPEC_HASH_MEMO_CACHE) with stdlib_primitives support."""
 
     def __init__(self):
         self._memo_vault: Dict[str, Dict[str, Any]] = {}
@@ -121,7 +118,8 @@ class MacroEpoch2Router:
                 "problem_id": item["problem_id"],
                 "route": "system1_zero_shot_lora",
                 "passed": True,
-                "code": cand_lora,
+                "imports_used": "stdlib_primitives" in cand_lora,
+                "code_chars": len(cand_lora),
                 "latency_ms": round((time.perf_counter() - t0) * 1000.0, 4)
             }
             self._memo_vault[spec_hash] = res
@@ -136,22 +134,8 @@ class MacroEpoch2Router:
                     "problem_id": item["problem_id"],
                     "route": "system1_zero_shot_base_trunk",
                     "passed": True,
-                    "code": cand_base,
-                    "latency_ms": round((time.perf_counter() - t0) * 1000.0, 4)
-                }
-                self._memo_vault[spec_hash] = res
-                return res
-
-        if s2_fallback_fn is not None:
-            cand_s2 = s2_fallback_fn(item)
-            ok_s2, msg_s2 = self.verify_gates(cand_s2, item, extra_globals)
-            if ok_s2:
-                self.telemetry["s2_fallback_passes"] += 1
-                res = {
-                    "problem_id": item["problem_id"],
-                    "route": "system2_dag_fallback",
-                    "passed": True,
-                    "code": cand_s2,
+                    "imports_used": "stdlib_primitives" in cand_base,
+                    "code_chars": len(cand_base),
                     "latency_ms": round((time.perf_counter() - t0) * 1000.0, 4)
                 }
                 self._memo_vault[spec_hash] = res
@@ -165,17 +149,3 @@ class MacroEpoch2Router:
             "detail": msg_lora,
             "latency_ms": round((time.perf_counter() - t0) * 1000.0, 4)
         }
-
-if __name__ == "__main__":
-    router = MacroEpoch2Router()
-    sample = {
-        "problem_id": "gen31_kahan_kadane_hybrid",
-        "spec": "Max contiguous subarray sum.",
-        "fn_name": "kahan_max_subarray",
-        "oracle": lambda nums: float(max(nums[0], sum(nums))),
-        "test_cases": [([1.5, -0.5, 2.0],)]
-    }
-    s1_stub = lambda item: "def kahan_max_subarray(nums: list[float]) -> float:\n    return float(max(nums[0], sum(nums)))\n"
-    print("[Cold Pass]:", router.route(sample, s1_stub))
-    print("[Warm Pass]:", router.route(sample, s1_stub))
-    print("[Telemetry]:", router.telemetry)
