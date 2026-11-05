@@ -2,7 +2,7 @@
 
 **Authors:** Yasemin Gavares & Alexander Gavares  
 **Affiliations:** Autonomous Agent Architecture Research Group | Local Service App Inc (Local AI) / Kronoz Technologies LLC  
-**Engine Version:** `4.0.0-open-ended-discovery` | **License:** CC BY 4.0
+**Engine Version:** `4.1.0-macro-epoch2-closure` | **License:** CC BY 4.0
 
 ---
 
@@ -45,6 +45,18 @@ Applying `CausalProgramSlicer` and structural AST surgery operators to `orchestr
 | `OP_SPEC_HASH_MEMO_CACHE` | Pass | Pass | **Promoted** | **0.3848 ms (6.15x)** | **92.5%** | 144 |
 | `OP_UNSAFE_GATE_BYPASS_DEFECT` | **Blocked** | --- | --- | 999.0000 ms | 0.0% | 39 |
 
+### 4. Macro-Epoch 2 Closure: Zero-Shot Cross-Domain Hybrid Generalization (Generations 31–35)
+Coupling the distilled Track 1 System-1 LoRA adapter (`system1_distilled`) with the promoted Track 2 Meta-Harness (`OP_SPEC_HASH_MEMO_CACHE`) on unseen 2-way cross-domain hybrid ZPD specifications (`macro_epoch2_closure_metrics.json`):
+
+| Generation & Hybrid Problem ID | Cross-Domain Composition | Cold Route (T = 0) | Gate 0 & 2 | Cold GPU Latency | Warm Track-2 Latency |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| `gen31_kahan_kadane_hybrid` | Numerical Stability x Dynamic Prog. | `system1_zero_shot_lora` | **Pass** | 12245.80 ms | **0.0359 ms** |
+| `gen32_dfa_coin_cost_hybrid` | String Automata x Combinatorial Opt. | `system1_zero_shot_lora` | **Pass** | 11641.56 ms | **0.0150 ms** |
+| `gen33_dag_bottleneck_dp` | Graph Routing x Dynamic Prog. | `system1_zero_shot_lora` | **Pass** | 11730.00 ms | **0.0132 ms** |
+| `gen34_weighted_mismatch_penalty` | Dynamic Prog. x Numerical Stability | `system1_zero_shot_lora` | **Pass** | 7830.45 ms | **0.0121 ms** |
+| `gen35_subsequence_automata_dp` | String Automata x Dynamic Prog. | `system1_zero_shot_lora` | **Pass** | 7326.10 ms | **0.0117 ms** |
+| **Macro-Epoch 2 Mean / Total** | **5/5 Unseen Hybrid ZPD Tasks** | **100.0% Zero-Shot S1** | **100.0%** | **10154.78 ms** | **0.0176 ms (576,976x)** |
+
 ---
 
 ## Citation
@@ -56,3 +68,4 @@ Applying `CausalProgramSlicer` and structural AST surgery operators to `orchestr
   institution={Autonomous Agent Architecture Research Group, Local Service App Inc / Kronoz Technologies LLC},
   year={2026}
 }
+

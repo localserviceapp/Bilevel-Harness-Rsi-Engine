@@ -1,0 +1,83 @@
+{
+  "phase": "Macro-Epoch 2 Closure (Generations 31-35 Bi-Level Zero-Shot Cross-Domain Hybrids)",
+  "unseen_hybrid_tasks": 5,
+  "system1_lora_zero_shot_pass_rate": 1.0,
+  "system1_total_zero_shot_pass_rate": 1.0,
+  "total_verified_pass_rate": 1.0,
+  "mean_cold_gpu_latency_ms": 10154.78,
+  "mean_warm_memo_latency_ms": 0.0176,
+  "cold_results": [
+    {
+      "problem_id": "gen31_kahan_kadane_hybrid",
+      "route": "system1_zero_shot_lora",
+      "passed": true,
+      "code_chars": 229,
+      "latency_ms": 12245.8
+    },
+    {
+      "problem_id": "gen32_dfa_coin_cost_hybrid",
+      "route": "system1_zero_shot_lora",
+      "passed": true,
+      "code_chars": 185,
+      "latency_ms": 11641.56
+    },
+    {
+      "problem_id": "gen33_dag_bottleneck_dp",
+      "route": "system1_zero_shot_lora",
+      "passed": true,
+      "code_chars": 182,
+      "latency_ms": 11730.0
+    },
+    {
+      "problem_id": "gen34_weighted_mismatch_penalty",
+      "route": "system1_zero_shot_lora",
+      "passed": true,
+      "code_chars": 145,
+      "latency_ms": 7830.45
+    },
+    {
+      "problem_id": "gen35_subsequence_automata_dp",
+      "route": "system1_zero_shot_lora",
+      "passed": true,
+      "code_chars": 236,
+      "latency_ms": 7326.1
+    }
+  ],
+  "warm_results": [
+    {
+      "problem_id": "gen31_kahan_kadane_hybrid",
+      "route": "memo_cache_fastpath",
+      "passed": true,
+      "code_chars": 229,
+      "latency_ms": 0.0359
+    },
+    {
+      "problem_id": "gen32_dfa_coin_cost_hybrid",
+      "route": "memo_cache_fastpath",
+      "passed": true,
+      "code_chars": 185,
+      "latency_ms": 0.015
+    },
+    {
+      "problem_id": "gen33_dag_bottleneck_dp",
+      "route": "memo_cache_fastpath",
+      "passed": true,
+      "code_chars": 182,
+      "latency_ms": 0.0132
+    },
+    {
+      "problem_id": "gen34_weighted_mismatch_penalty",
+      "route": "memo_cache_fastpath",
+      "passed": true,
+      "code_chars": 145,
+      "latency_ms": 0.0121
+    },
+    {
+      "problem_id": "gen35_subsequence_automata_dp",
+      "route": "memo_cache_fastpath",
+      "passed": true,
+      "code_chars": 236,
+      "latency_ms": 0.0117
+    }
+  ]
+}
