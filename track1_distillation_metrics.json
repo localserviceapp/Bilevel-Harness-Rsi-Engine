@@ -1,0 +1,11 @@
+{
+  "track": "Track 1 - Loop 4 Parametric Distillation (GRPO LoRA)",
+  "base_model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+  "adapter_path": "./lora_loop4_adapters/system1_distilled",
+  "total_evaluated_trajectories": 20,
+  "passed_trajectories": 20,
+  "holdout_vault_pass_rate_tau": 1.0,
+  "avg_token_compression_rho": 2.8034,
+  "peak_token_compression_rho": 4.91,
+  "gate0_ast_compliance": 1.0
+}

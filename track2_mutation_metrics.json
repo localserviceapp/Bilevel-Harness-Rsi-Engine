@@ -1,0 +1,62 @@
+{
+  "track": "Track 2 - Self-Referential Meta-Harness Mutation",
+  "causal_slicer_bottlenecks_found": [
+    "system1_fn",
+    "verify_gate0",
+    "verify_gate2",
+    "system2_fn",
+    "verify_gate0",
+    "verify_gate2"
+  ],
+  "baseline_mean_latency_ms": 2.367,
+  "best_mutated_latency_ms": 0.3848,
+  "orchestration_speedup_factor": "6.15x",
+  "max_system2_calls_eliminated_pct": 92.5,
+  "unsafe_mutations_caught_by_tier1": 1,
+  "evaluations": [
+    {
+      "mutation_id": "b75e641ddd",
+      "operator": "BASELINE_UNMUTATED",
+      "tier1_contract_ok": true,
+      "tier2_regression_ok": true,
+      "tier3_pareto_ok": true,
+      "mean_latency_ms": 2.367,
+      "s2_calls_saved_pct": 0.0,
+      "ast_complexity_nodes": 104,
+      "backprop_routing_hint": "BASELINE_REGISTERED"
+    },
+    {
+      "mutation_id": "becf64ae3c",
+      "operator": "OP_LAZY_S2_SHORT_CIRCUIT",
+      "tier1_contract_ok": true,
+      "tier2_regression_ok": true,
+      "tier3_pareto_ok": true,
+      "mean_latency_ms": 0.8008,
+      "s2_calls_saved_pct": 85.0,
+      "ast_complexity_nodes": 76,
+      "backprop_routing_hint": "PROMOTE_TO_ARCHIVE: Latency reduced by 66.2% and 85.0% System-2 calls eliminated."
+    },
+    {
+      "mutation_id": "14507b8a35",
+      "operator": "OP_SPEC_HASH_MEMO_CACHE",
+      "tier1_contract_ok": true,
+      "tier2_regression_ok": true,
+      "tier3_pareto_ok": true,
+      "mean_latency_ms": 0.3848,
+      "s2_calls_saved_pct": 92.5,
+      "ast_complexity_nodes": 144,
+      "backprop_routing_hint": "PROMOTE_TO_ARCHIVE: Latency reduced by 83.7% and 92.5% System-2 calls eliminated."
+    },
+    {
+      "mutation_id": "b031a1ca66",
+      "operator": "OP_UNSAFE_GATE_BYPASS_DEFECT",
+      "tier1_contract_ok": false,
+      "tier2_regression_ok": false,
+      "tier3_pareto_ok": false,
+      "mean_latency_ms": 999.0,
+      "s2_calls_saved_pct": 0.0,
+      "ast_complexity_nodes": 39,
+      "backprop_routing_hint": "REJECT_TIER1: Mutation violated mandatory firewall invariant (missing verify_gate0/verify_gate2 call)."
+    }
+  ]
+}
