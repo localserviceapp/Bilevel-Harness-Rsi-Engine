@@ -1,0 +1,85 @@
+{
+  "benchmark": "v10.0 Continuous 5-Generation Autonomous Evolution Loop (Generations 66-70)",
+  "total_crystallized_primitives_on_disk": 9,
+  "crystallized_primitive_names": [
+    "adaptive_horizon_flux",
+    "autonomous_corridor_utility",
+    "count_target_subseq",
+    "dfa_penalized_divergence",
+    "dfa_weighted_transitions",
+    "kahan_max_subarray",
+    "stabilized_route_margin",
+    "weighted_mismatch_cost",
+    "widest_path_capacity"
+  ],
+  "generations_66_to_70_elites": [
+    {
+      "generation": 66,
+      "task_id": "gen66_autonomous_corridor_utility",
+      "pareto_score": 0.922947,
+      "sha256": "a4c00f892ae2b89c",
+      "archive_elites_logged": 1
+    },
+    {
+      "generation": 67,
+      "task_id": "gen67_dfa_penalized_divergence",
+      "pareto_score": 0.916899,
+      "sha256": "241a3001c67345fa",
+      "archive_elites_logged": 2
+    },
+    {
+      "generation": 68,
+      "task_id": "gen68_adaptive_horizon_flux",
+      "pareto_score": 0.931058,
+      "sha256": "f329eb3132026c8c",
+      "archive_elites_logged": 3
+    },
+    {
+      "generation": 69,
+      "task_id": "gen69_swe_evo_3module_v10",
+      "pareto_score": 0.860707,
+      "sha256": "8e0fb0a04d424a73",
+      "archive_elites_logged": 4
+    },
+    {
+      "generation": 70,
+      "task_id": "gen70_relora_orthogonal_consolidation",
+      "pareto_score": 0.906834,
+      "sha256": "22cae3e03b427762",
+      "archive_elites_logged": 5
+    }
+  ],
+  "gen68_concolic_trap_caught": {
+    "passed": false,
+    "branches_solved": 1,
+    "concolic_counterexample": {
+      "peak": 77777,
+      "cost": 42424,
+      "scale": 5651582
+    },
+    "solve_time_ms": 37.765
+  },
+  "gen69_swe_evo_bisection": {
+    "delta_slice": {
+      "pkg_corridor": 1,
+      "pkg_divergence": 0,
+      "pkg_flux_pipeline": 1
+    },
+    "committed": true,
+    "delta_ast": 0.3548
+  },
+  "gen70_live_qwen_consolidation": {
+    "orthogonal_trainer": {
+      "rollouts_consumed": 5,
+      "live_grad_projected_layers": 196,
+      "max_grad_overlap_residual": 6.37e-17
+    },
+    "relora_folding": {
+      "layers_folded": 196,
+      "banks_merged": 3,
+      "max_forward_equivalence_drift": 2.62e-06,
+      "lora_b_zero_reset_verified": true,
+      "fresh_orthogonal_slots_unlocked": 96
+    }
+  }
+}

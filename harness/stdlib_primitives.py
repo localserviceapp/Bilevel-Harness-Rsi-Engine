@@ -32,3 +32,15 @@ def count_target_subseq(text: str, pat: str) -> int:
 
 def stabilized_route_margin(series: list[float], adj: dict, route: list[int], scale: float) -> float:
     return (kahan_max_subarray(series) + widest_path_capacity(adj, route)) * float(scale)
+
+
+def autonomous_corridor_utility(series: list[float], adj: dict, route: list[int], log: str, sig: str, scale: float) -> float:
+    return stabilized_route_margin(series, adj, route, scale) * count_target_subseq(log, sig)
+
+
+def dfa_penalized_divergence(token: str, c0: int, c1: int, s1: str, s2: str, weights: list[float], scale: float) -> float:
+    return (dfa_weighted_transitions(token, c0, c1) - weighted_mismatch_cost(s1, s2, weights)) * float(scale)
+
+
+def adaptive_horizon_flux(series: list[float], s1: str, s2: str, weights: list[float], scale: float) -> float:
+    return (kahan_max_subarray(series) - weighted_mismatch_cost(s1, s2, weights)) * scale
