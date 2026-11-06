@@ -28,3 +28,7 @@ def count_target_subseq(text: str, pat: str) -> int:
             if ch == pat[j]:
                 dp[j + 1] += dp[j]
     return dp[len(pat)]
+
+
+def stabilized_route_margin(series: list[float], adj: dict, route: list[int], scale: float) -> float:
+    return (kahan_max_subarray(series) + widest_path_capacity(adj, route)) * float(scale)

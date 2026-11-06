@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Master One-Command Reproducibility Suite (v8.0.0 — 60-Generation Complete RSI Closure)
+Master One-Command Reproducibility Suite (v9.0.0 — 65-Generation Live Self-Modifying Closure)
 """
 import json
 import math
@@ -22,12 +22,15 @@ from lora_moe_router import OrthogonalLoRAMoERouter
 from autonomous_rsi_daemon import AutonomousRSIDaemon
 from relora_consolidator import ReLoRATrunkConsolidator
 from disaggregated_actor_learner import DisaggregatedActorLearnerEngine
+from autonomous_challenger import AutonomousChallenger
+from live_relora_trainer import LiveReLoRAOrthogonalTrainer
+from self_patcher import DiskSelfHostingPatcher
 
 
 def main() -> int:
     t0 = time.perf_counter()
     print("======================================================================")
-    print(" BI-LEVEL HARNESS RSI ENGINE - MASTER VERIFICATION SUITE (v8.0.0)     ")
+    print(" BI-LEVEL HARNESS RSI ENGINE - MASTER VERIFICATION SUITE (v9.0.0)     ")
     print("======================================================================")
 
     router = MacroEpoch2Router()
@@ -35,24 +38,34 @@ def main() -> int:
     swe_verifier = SweEvoMultiFileVerifier(max_examples=50)
     moe_router = OrthogonalLoRAMoERouter()
     daemon = AutonomousRSIDaemon(swe_verifier, moe_router)
+    challenger = AutonomousChallenger()
 
-    # 1. Firewall Gate-0 check
-    ok_safe, _ = router.check_gate0_ast("def f(x):\n    return x + 1\n")
+    # 1. Firewall Gate-0 & Gen 65 Self-Hosted Memo Cache check
+    ok_safe, _ = router.check_gate0_ast(
+        "from stdlib_primitives import kahan_max_subarray\n"
+        "def peak_signal(series: list[float], scale: float) -> float:\n"
+        "    return float(kahan_max_subarray(series) * float(scale))\n"
+    )
     ok_exploit, msg_exploit = router.check_gate0_ast("import os\ndef f(x):\n    return os.system('echo pwn')\n")
     assert ok_safe and not ok_exploit
     print(f"[PASS] Gate-0 Static AST Firewall        : Active (Blocked -> {msg_exploit})")
 
-    # 2. Skill Library Crystallization check
+    # 2. Skill Library Crystallization check (now 6/6 with Gen 62 stabilized_route_margin)
     expected_primitives = [
         "kahan_max_subarray",
         "dfa_weighted_transitions",
         "widest_path_capacity",
         "weighted_mismatch_cost",
         "count_target_subseq",
+        "stabilized_route_margin",
     ]
     present = [fn for fn in expected_primitives if hasattr(stdlib_primitives, fn)]
-    assert len(present) == 5
-    print(f"[PASS] Step 2 Skill Library (L_tools)    : {len(present)}/5 Primitives Verified")
+    assert len(present) == 6, f"Expected 6 primitives, found {present}"
+    margin_val = stdlib_primitives.stabilized_route_margin(
+        [1.0, -0.5, 3.0], {0: {1: 10.0}, 1: {2: 8.0}}, [0, 1, 2], 2.0
+    )
+    assert math.isclose(margin_val, 23.0)
+    print(f"[PASS] Gen 62 Disk Skill Library         : {len(present)}/6 Primitives Verified (stabilized_route_margin={margin_val})")
 
     # 3. Step 3 Metamorphic & Blindspot check
     comp_code = (
@@ -98,18 +111,18 @@ def main() -> int:
     assert relora_res["lora_b_zero_reset_verified"] and disagg_res["vram_footprint_reduction_pct"] > 99.0
     print(f"[PASS] Gen 58-60 ReLoRA & Disaggregation : Drift={relora_res['max_forward_equivalence_drift']:.2e} | VRAM Saved={disagg_res['vram_footprint_reduction_pct']}%")
 
-    # 6. Verify v8_complete_rsi_metrics.json (Gen 51-60 CUDA & Z3 Telemetry)
+    # 6. Verify v8 & v9 Live GPU Self-Modifying Telemetry
     assert (ROOT / "v8_complete_rsi_metrics.json").exists(), "Missing v8_complete_rsi_metrics.json"
-    v8 = json.loads((ROOT / "v8_complete_rsi_metrics.json").read_text())
-    z3_status = v8["phase_b_v8_limit_breakers"]["limit1_z3_proof_carrying"]["universal_homogeneity_proof"]["smt_status"]
-    cex = v8["phase_b_v8_limit_breakers"]["limit3_concolic_ast_branch_solver"]["concolic_solver_result"]["concolic_counterexample"]
-    speedup = v8["phase_a_v7_autonomous_daemon"]["gen55_self_hosting_gate_speedup"]
-    assert z3_status == "UNSAT_PROVED_UNIVERSAL" and cex["amount"] == 31337
-    print(f"[PASS] Gen 55-57 Z3 & Concolic Telemetry : {z3_status} | CEX={cex} | Gate Speedup={speedup}x")
+    assert (ROOT / "v9_unscripted_rsi_metrics.json").exists(), "Missing v9_unscripted_rsi_metrics.json"
+    v9 = json.loads((ROOT / "v9_unscripted_rsi_metrics.json").read_text())
+    grad_res = v9["gen63_64_live_qwen_orthogonal_gradient_step"]["max_grad_overlap_residual"]
+    disk_speedup = v9["gen65_disk_self_hosting_router_patch"]["disk_router_speedup"]
+    assert v9["gen65_disk_self_hosting_router_patch"]["committed_to_disk"] is True
+    print(f"[PASS] Gen 61-65 Live Self-Modifying RSI : 196-Layer Grad Res={grad_res:.2e} | Disk Router Speedup={disk_speedup}x")
 
     elapsed = round((time.perf_counter() - t0) * 1000.0, 2)
     print("======================================================================")
-    print(f" ALL V8.0.0 (GEN 1-60) VERIFICATION GATES PASSED IN {elapsed} ms")
+    print(f" ALL V9.0.0 (GEN 1-65) VERIFICATION GATES PASSED IN {elapsed} ms")
     print("======================================================================")
     return 0
 

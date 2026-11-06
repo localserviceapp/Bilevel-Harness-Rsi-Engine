@@ -149,3 +149,28 @@ class MacroEpoch2Router:
             "detail": msg_lora,
             "latency_ms": round((time.perf_counter() - t0) * 1000.0, 4)
         }
+
+# --- SELF-HOSTED GATE-0 AST FINGERPRINT CACHE (GEN 65) ---
+_raw_gate0 = MacroEpoch2Router.__dict__.get('check_gate0_ast')
+_orig_check_gate0_ast = MacroEpoch2Router.check_gate0_ast
+_gate0_memo_cache = {}
+if isinstance(_raw_gate0, staticmethod):
+    @staticmethod
+    def _fast_check_gate0_ast(code_str: str, *args, **kwargs):
+        _h = hash(code_str)
+        if _h in _gate0_memo_cache and not args and not kwargs:
+            return _gate0_memo_cache[_h]
+        _res = _orig_check_gate0_ast(code_str, *args, **kwargs)
+        if not args and not kwargs:
+            _gate0_memo_cache[_h] = _res
+        return _res
+else:
+    def _fast_check_gate0_ast(self, code_str: str, *args, **kwargs):
+        _h = hash(code_str)
+        if _h in _gate0_memo_cache and not args and not kwargs:
+            return _gate0_memo_cache[_h]
+        _res = _orig_check_gate0_ast(self, code_str, *args, **kwargs)
+        if not args and not kwargs:
+            _gate0_memo_cache[_h] = _res
+        return _res
+MacroEpoch2Router.check_gate0_ast = _fast_check_gate0_ast

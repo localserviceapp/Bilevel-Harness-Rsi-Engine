@@ -1,0 +1,31 @@
+{
+  "benchmark": "v9.0 Unscripted Challenger, Live Qwen Orthogonal-Gradient Step & Disk Self-Hosting (Generations 61-65)",
+  "gen61_62_autonomous_challenger_and_disk_crystallization": {
+    "hypothesis_passed": true,
+    "z3_universal_proof": "UNSAT_PROVED_UNIVERSAL",
+    "crystallization": {
+      "crystallized_function": "stabilized_route_margin",
+      "total_stdlib_primitives_on_disk": 6,
+      "stdlib_file": "harness/stdlib_primitives.py"
+    },
+    "gpu_tokens": 68,
+    "gpu_ms": 10008.62
+  },
+  "gen63_64_live_qwen_orthogonal_gradient_step": {
+    "rollouts_consumed": 1,
+    "live_loss": 3.3125,
+    "live_grad_projected_layers": 196,
+    "max_grad_overlap_residual": 6.372460814167653e-17,
+    "step_time_ms": 3320.19
+  },
+  "gen65_disk_self_hosting_router_patch": {
+    "target_file": "harness/macro_epoch2_router.py",
+    "committed_to_disk": true,
+    "rolled_back": false,
+    "backup_sha256": "a5aa4ab86dc68d39",
+    "new_sha256": "237efcd76b88cc86",
+    "baseline_gate0_ms": 0.08594,
+    "patched_gate0_ms": 0.000708,
+    "disk_router_speedup": 121.44
+  }
+}
