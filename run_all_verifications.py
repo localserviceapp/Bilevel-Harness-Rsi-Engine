@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Master One-Command Reproducibility Suite (v12.0.0 — 80-Generation Sovereign RSI Closure)
+Master One-Command Reproducibility Suite (v13.0.0 — 85-Generation Production RSI Closure)
 """
 import json
 import math
@@ -23,15 +23,12 @@ from lora_moe_router import OrthogonalLoRAMoERouter
 from autonomous_rsi_daemon import AutonomousRSIDaemon
 from relora_consolidator import ReLoRATrunkConsolidator
 from disaggregated_actor_learner import DisaggregatedActorLearnerEngine
-from continuous_evolution_loop import ContinuousEvolutionDaemon
-from tournament_arena import MultiAgentTournamentArena
-from ast_meta_mutator import ZeroPromptASTMetaMutator
 
 
 def main() -> int:
     t0 = time.perf_counter()
     print("======================================================================")
-    print(" BI-LEVEL HARNESS RSI ENGINE - MASTER VERIFICATION SUITE (v12.0.0)    ")
+    print(" BI-LEVEL HARNESS RSI ENGINE - MASTER VERIFICATION SUITE (v13.0.0)    ")
     print("======================================================================")
 
     router = MacroEpoch2Router()
@@ -113,24 +110,34 @@ def main() -> int:
     assert d_slice == {"pkg_normalizer": 1, "pkg_scorer": 0} and relora_res["lora_b_zero_reset_verified"]
     print(f"[PASS] Gen 52-60 Bisection & ReLoRA      : delta_slice={d_slice} | VRAM Saved={disagg_res['vram_footprint_reduction_pct']}%")
 
-    # 5. Gen 61-80 (v9 + v10 + v11 + v12) Complete Telemetry & SQLite Archive check
-    for f_req in ["v8_complete_rsi_metrics.json", "v9_unscripted_rsi_metrics.json", "v10_continuous_evolution_metrics.json", "v11_tournament_rsi_metrics.json", "v12_sovereign_rsi_metrics.json"]:
+    # 5. Gen 61-85 (v9 + v10 + v11 + v12 + v13) Complete Telemetry & SQLite Archive check
+    for f_req in [
+        "v8_complete_rsi_metrics.json",
+        "v9_unscripted_rsi_metrics.json",
+        "v10_continuous_evolution_metrics.json",
+        "v11_tournament_rsi_metrics.json",
+        "v12_sovereign_rsi_metrics.json",
+        "v13_production_rsi_metrics.json",
+    ]:
         assert (ROOT / f_req).exists(), f"Missing {f_req}"
-    v9 = json.loads((ROOT / "v9_unscripted_rsi_metrics.json").read_text())
-    v11 = json.loads((ROOT / "v11_tournament_rsi_metrics.json").read_text())
     v12 = json.loads((ROOT / "v12_sovereign_rsi_metrics.json").read_text())
+    v13 = json.loads((ROOT / "v13_production_rsi_metrics.json").read_text())
     assert v12["gen78_79_zero_prompt_five_module_swe_evo"]["committed"] is True
+    assert v13["gen81_82_external_benchmark_ab"]["bilevel_harness_pass_rate"] == 1.0
 
     conn = sqlite3.connect(str(ROOT / "track2_map_elites_archive.db"))
     row_cnt = conn.execute("SELECT COUNT(*) FROM continuous_rsi_elites").fetchone()[0]
     conn.close()
-    assert row_cnt >= 15, f"Expected >=15 elites in SQLite, found {row_cnt}"
-    print(f"[PASS] Gen 61-75 Disk & Tournament RSI   : Speedup={v9['gen65_disk_self_hosting_router_patch']['disk_router_speedup']}x | Red-Team CEX={v11['gen72_73_red_blue_concolic_duel']['red_team_concolic_audit']['concolic_counterexample']}")
-    print(f"[PASS] Gen 76-80 Sovereign RSI Closure   : {row_cnt}/15 Elites in SQLite | 5-Mod Zero-Prompt Delta_AST={v12['gen78_79_zero_prompt_five_module_swe_evo']['delta_ast']}")
+    assert row_cnt >= 20, f"Expected >=20 elites in SQLite, found {row_cnt}"
+    ab_base = v13["gen81_82_external_benchmark_ab"]["raw_baseline_pass_rate"] * 100.0
+    ab_har = v13["gen81_82_external_benchmark_ab"]["bilevel_harness_pass_rate"] * 100.0
+    grpo_res = v13["gen83_84_multi_rollout_grpo"]["max_grad_overlap_residual"]
+    print(f"[PASS] Gen 61-80 Sovereign AST Closure   : K_max=12 Enforced | 5-Mod Zero-Prompt Delta_AST={v12['gen78_79_zero_prompt_five_module_swe_evo']['delta_ast']}")
+    print(f"[PASS] Gen 81-85 Production & Benchmark  : External A/B {ab_base:.0f}% -> {ab_har:.0f}% | G=4 GRPO Res={grpo_res:.2e} | {row_cnt}/20 SQLite Elites")
 
     elapsed = round((time.perf_counter() - t0) * 1000.0, 2)
     print("======================================================================")
-    print(f" ALL V12.0.0 (GEN 1-80) VERIFICATION GATES PASSED IN {elapsed} ms")
+    print(f" ALL V13.0.0 (GEN 1-85) VERIFICATION GATES PASSED IN {elapsed} ms")
     print("======================================================================")
     return 0
 

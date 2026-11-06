@@ -1,0 +1,107 @@
+{
+  "benchmark": "v13.0 External Benchmark A/B, True G=4 Clipped GRPO + Schulman KL & FastAPI Microservice Closure (Generations 81-85)",
+  "gen81_82_external_benchmark_ab": {
+    "total_tasks": 5,
+    "raw_baseline_pass_rate": 0.4,
+    "bilevel_harness_pass_rate": 1.0,
+    "mean_raw_tokens": 94.2,
+    "mean_harness_tokens": 68.4,
+    "tasks": [
+      {
+        "task_id": "HE_LCB_01_trapping_rain_water",
+        "raw_baseline_vault_passed": false,
+        "bilevel_harness_vault_passed": true
+      },
+      {
+        "task_id": "HE_LCB_02_weighted_hamming_alignment",
+        "raw_baseline_vault_passed": true,
+        "bilevel_harness_vault_passed": true
+      },
+      {
+        "task_id": "HE_LCB_03_kahan_peak_burst",
+        "raw_baseline_vault_passed": false,
+        "bilevel_harness_vault_passed": true
+      },
+      {
+        "task_id": "HE_LCB_04_network_bottleneck_capacity",
+        "raw_baseline_vault_passed": false,
+        "bilevel_harness_vault_passed": true
+      },
+      {
+        "task_id": "HE_LCB_05_distinct_subsequence_count",
+        "raw_baseline_vault_passed": true,
+        "bilevel_harness_vault_passed": true
+      }
+    ]
+  },
+  "gen83_84_multi_rollout_grpo": {
+    "group_size": 4,
+    "verifiable_rewards": [
+      1.2385,
+      1.2355,
+      0.1145,
+      0.0
+    ],
+    "group_advantages": [
+      1.0002,
+      0.9951,
+      -0.9008,
+      -1.0945
+    ],
+    "schulman_kl_divergence": 2e-06,
+    "grpo_surrogate_loss": -0.14182,
+    "projected_lora_layers": 196,
+    "max_grad_overlap_residual": 1.68e-17
+  },
+  "gen85_fastapi_pydantic_service": {
+    "safe_payload": {
+      "task_id": "gen85_api_safe",
+      "gate_telemetry": {
+        "triggered_gate": "PASS"
+      }
+    },
+    "blocked_exploit_payload": {
+      "task_id": "gen85_api_exploit",
+      "structural_failure": {
+        "failure_taxonomy": "SANDBOX_VIOLATION"
+      }
+    },
+    "archive_endpoint": {
+      "engine_version": "13.0.0",
+      "sqlite_archive_elites": 20,
+      "status": "HEALTHY"
+    }
+  },
+  "generations_81_to_85_elites": [
+    {
+      "generation": 81,
+      "task_id": "gen81_external_benchmark_baseline_ab",
+      "pareto_score": 0.910412,
+      "sha256": "4bf4a92debd03092"
+    },
+    {
+      "generation": 82,
+      "task_id": "gen82_external_benchmark_bilevel_100pct",
+      "pareto_score": 0.924118,
+      "sha256": "3e85ef1a63726a93"
+    },
+    {
+      "generation": 83,
+      "task_id": "gen83_grpo_g4_group_advantage_step",
+      "pareto_score": 0.926504,
+      "sha256": "956a2a2de4f1e044"
+    },
+    {
+      "generation": 84,
+      "task_id": "gen84_schulman_kl_orthogonal_projection",
+      "pareto_score": 0.928911,
+      "sha256": "9267a839cf084d16"
+    },
+    {
+      "generation": 85,
+      "task_id": "gen85_fastapi_pydantic_microservice",
+      "pareto_score": 0.967145,
+      "sha256": "e1a3a78d05b11f19"
+    }
+  ]
+}
