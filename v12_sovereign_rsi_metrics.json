@@ -1,0 +1,92 @@
+{
+  "benchmark": "v12.0 Zero-Prompt AST Meta-Mutator, K_max=12 Capacity Eviction & 5-Module SWE-EVO Closure (Generations 76-80)",
+  "kmax_capacity_eviction": {
+    "k_max": 12,
+    "final_library_size": 12,
+    "evicted_primitive": {
+      "name": "legacy_linear_probe",
+      "calls": 0,
+      "halstead_bits": 25.27,
+      "utility": 108.317
+    },
+    "retained_primitives": [
+      "kahan_max_subarray",
+      "dfa_weighted_transitions",
+      "widest_path_capacity",
+      "weighted_mismatch_cost",
+      "count_target_subseq",
+      "stabilized_route_margin",
+      "autonomous_corridor_utility",
+      "dfa_penalized_divergence",
+      "adaptive_horizon_flux",
+      "pareto_equilibrium_score",
+      "concolic_verified_dispatch",
+      "sovereign_manifold_surplus"
+    ]
+  },
+  "gen78_79_zero_prompt_five_module_swe_evo": {
+    "delta_slice": {
+      "pkg_margin": 0,
+      "pkg_corridor": 0,
+      "pkg_equilibrium": 0,
+      "pkg_surplus": 1,
+      "pkg_sovereign_core": 1
+    },
+    "committed": true,
+    "delta_ast": 0.0343
+  },
+  "gen80_four_epoch_consolidation": {
+    "orthogonal_trainer": {
+      "rollouts_consumed": 9,
+      "live_loss": 3.3125,
+      "live_grad_projected_layers": 196,
+      "max_grad_overlap_residual": 6.372460814167653e-17,
+      "step_time_ms": 864.55
+    },
+    "relora_folding": {
+      "layers_folded": 196,
+      "banks_merged": 3,
+      "max_forward_equivalence_drift": 2.6226043701171875e-06,
+      "lora_b_zero_reset_verified": true,
+      "fresh_orthogonal_slots_unlocked": 96,
+      "consolidation_time_ms": 42.77
+    }
+  },
+  "generations_76_to_80_elites": [
+    {
+      "generation": 76,
+      "task_id": "gen76_kmax_capacity_eviction",
+      "pareto_score": 0.881878,
+      "sha256": "862bdc964bf4c44e",
+      "archive_elites_logged": 12
+    },
+    {
+      "generation": 77,
+      "task_id": "gen77_sovereign_manifold_surplus",
+      "pareto_score": 0.881878,
+      "sha256": "862bdc964bf4c44e",
+      "archive_elites_logged": 12
+    },
+    {
+      "generation": 78,
+      "task_id": "gen78_zero_prompt_ast_introspector",
+      "pareto_score": 0.850215,
+      "sha256": "fd0ae04f1e2ab29b",
+      "archive_elites_logged": 13
+    },
+    {
+      "generation": 79,
+      "task_id": "gen79_swe_evo_5module_sovereign",
+      "pareto_score": 0.850215,
+      "sha256": "9c1a031f13448969",
+      "archive_elites_logged": 14
+    },
+    {
+      "generation": 80,
+      "task_id": "gen80_four_epoch_relora_closure",
+      "pareto_score": 0.881412,
+      "sha256": "50e75f76f761a723",
+      "archive_elites_logged": 15
+    }
+  ]
+}

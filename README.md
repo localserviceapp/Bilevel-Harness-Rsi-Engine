@@ -1,4 +1,4 @@
-# Bi-Level Harness Optimization & Textual Backpropagation in Autonomous 4-Loop RSI Engines (`v11.0.0` — 75-Generation Multi-Agent Tournament Closure)
+# Bi-Level Harness Optimization & Textual Backpropagation in Autonomous 4-Loop RSI Engines (`v12.0.0` — 80-Generation Sovereign RSI Closure)
 
 **Authors:** Yasemin Gavares & Alexander Gavares  
 **Affiliation:** Autonomous Agent Architecture Research Group — Local Service App Inc / Kronoz Technologies LLC  
@@ -6,7 +6,7 @@
 
 ---
 
-## Complete Empirical Validation Summary (Generations 1–75)
+## Complete Empirical Validation Summary (Generations 1–80)
 
 | Phase / Track | Generations | Core Milestone | Vault / Invariant Pass Rate | Key Physical Metric |
 | :--- | :---: | :--- | :---: | :--- |
@@ -23,6 +23,7 @@
 | **v9.0 Live Self-Modifying RSI** | Gen 61–65 | Disk Tool Crystallization, Live `Qwen` Orthogonal Grad & Disk Self-Patch | **100.0%** (6/6 Disk Tools + Z3 `UNSAT`) | Grad Res $6.37\times 10^{-17}$ / **$121.44\times$ Disk Router Speedup** |
 | **v10.0 Continuous Evolution** | Gen 66–70 | 5-Gen Unbroken Loop, 2nd-Order Tool Growth (9 Tools) & SQLite Elites | **100.0%** (9/9 Tools, 5/5 SQLite Elites) | Peak $\mathcal{F} = 0.9311$ / $\Delta_{\text{AST}} = 0.3548$ |
 | **v11.0 Multi-Agent Tournament** | Gen 71–75 | 3-Expert QR Bank, Red/Blue Concolic Duel, 11 Disk Tools & 4-Mod Arena | **100.0%** (11/11 Tools, 10/10 SQLite Elites) | Duel Solved in **$14.80\text{ ms}$** / 4-Mod $\Delta_{\text{AST}} = 0.3298$ |
+| **v12.0 Sovereign AST Closure** | Gen 76–80 | $K_{\max}=12$ Capacity Eviction, Zero-Prompt AST Introspection & 5-Mod Repair | **100.0%** (12/12 Capped Tools, 15/15 Elites) | Evicted Low-Util Leaf / 5-Mod $\Delta_{\text{AST}} = 0.0343$ |
 
 ---
 
@@ -30,3 +31,4 @@
 
 ```bash
 python3 run_all_verifications.py
+

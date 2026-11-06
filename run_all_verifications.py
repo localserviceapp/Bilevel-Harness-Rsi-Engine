@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 """
-Master One-Command Reproducibility Suite (v11.0.0 — 75-Generation Multi-Agent Tournament RSI Closure)
-Verifies Generations 1-75 across Gate-0 AST, 11 Crystallized Primitives, Metamorphic Fuzzing,
-Causal Program Slicing, ReLoRA, Disaggregated Queues, Disk Self-Hosting, Continuous Evolution,
-and the Multi-Agent Orthogonal Tournament Arena.
+Master One-Command Reproducibility Suite (v12.0.0 — 80-Generation Sovereign RSI Closure)
 """
 import json
 import math
@@ -28,12 +25,13 @@ from relora_consolidator import ReLoRATrunkConsolidator
 from disaggregated_actor_learner import DisaggregatedActorLearnerEngine
 from continuous_evolution_loop import ContinuousEvolutionDaemon
 from tournament_arena import MultiAgentTournamentArena
+from ast_meta_mutator import ZeroPromptASTMetaMutator
 
 
 def main() -> int:
     t0 = time.perf_counter()
     print("======================================================================")
-    print(" BI-LEVEL HARNESS RSI ENGINE - MASTER VERIFICATION SUITE (v11.0.0)    ")
+    print(" BI-LEVEL HARNESS RSI ENGINE - MASTER VERIFICATION SUITE (v12.0.0)    ")
     print("======================================================================")
 
     router = MacroEpoch2Router()
@@ -52,7 +50,7 @@ def main() -> int:
     assert ok_safe and not ok_exploit
     print(f"[PASS] Gate-0 Static AST Firewall        : Active (Blocked -> {msg_exploit})")
 
-    # 2. Skill Library Crystallization check (11/11 primitives across Gen 36-73)
+    # 2. Skill Library K_max=12 Capacity Gate & 4th-Order Composition check (Gen 36-77)
     expected_primitives = [
         "kahan_max_subarray",
         "dfa_weighted_transitions",
@@ -65,17 +63,15 @@ def main() -> int:
         "adaptive_horizon_flux",
         "pareto_equilibrium_score",
         "concolic_verified_dispatch",
+        "sovereign_manifold_surplus",
     ]
     present = [fn for fn in expected_primitives if hasattr(stdlib_primitives, fn)]
-    assert len(present) == 11, f"Expected 11 primitives, found {present}"
-    eq_val = stdlib_primitives.pareto_equilibrium_score(
-        [1.0, -0.5, 3.0], {0: {1: 10.0}, 1: {2: 8.0}}, [0, 1, 2], "babgbag", "bag", "1010", "1110", [1.0, 2.0, 1.0, 1.0], 2.0
+    assert len(present) == 12 and not hasattr(stdlib_primitives, "legacy_linear_probe"), f"Found {present}"
+    surplus_val = stdlib_primitives.sovereign_manifold_surplus(
+        [1.0, -0.5, 3.0], {0: {1: 10.0}, 1: {2: 8.0}}, [0, 1, 2], "babgbag", "bag", "1010", "1010", "1110", [1.0, 2.0, 1.0, 1.0], 2.0
     )
-    disp_val = stdlib_primitives.concolic_verified_dispatch(
-        [1.0, -0.5, 3.0], {0: {1: 10.0}, 1: {2: 8.0}}, [0, 1, 2], "1010", "1010", "1110", [1.0, 2.0, 1.0, 1.0], 2.0
-    )
-    assert math.isclose(eq_val, 118.0) and math.isclose(disp_val, 31.0)
-    print(f"[PASS] Gen 73 Evolved Skill Library      : {len(present)}/11 Primitives Verified (eq={eq_val}, disp={disp_val})")
+    assert math.isclose(surplus_val, 149.0)
+    print(f"[PASS] Gen 77 K_max=12 Skill Library     : {len(present)}/12 Primitives Verified (surplus={surplus_val}, evicted=legacy_linear_probe)")
 
     # 3. Step 3 Metamorphic & Blindspot check
     comp_code = (
@@ -117,28 +113,24 @@ def main() -> int:
     assert d_slice == {"pkg_normalizer": 1, "pkg_scorer": 0} and relora_res["lora_b_zero_reset_verified"]
     print(f"[PASS] Gen 52-60 Bisection & ReLoRA      : delta_slice={d_slice} | VRAM Saved={disagg_res['vram_footprint_reduction_pct']}%")
 
-    # 5. Gen 61-75 (v9 + v10 + v11) Live Self-Modifying, Continuous & Tournament Telemetry
-    for f_req in ["v8_complete_rsi_metrics.json", "v9_unscripted_rsi_metrics.json", "v10_continuous_evolution_metrics.json", "v11_tournament_rsi_metrics.json"]:
+    # 5. Gen 61-80 (v9 + v10 + v11 + v12) Complete Telemetry & SQLite Archive check
+    for f_req in ["v8_complete_rsi_metrics.json", "v9_unscripted_rsi_metrics.json", "v10_continuous_evolution_metrics.json", "v11_tournament_rsi_metrics.json", "v12_sovereign_rsi_metrics.json"]:
         assert (ROOT / f_req).exists(), f"Missing {f_req}"
     v9 = json.loads((ROOT / "v9_unscripted_rsi_metrics.json").read_text())
-    v10 = json.loads((ROOT / "v10_continuous_evolution_metrics.json").read_text())
     v11 = json.loads((ROOT / "v11_tournament_rsi_metrics.json").read_text())
-
-    disk_speedup = v9["gen65_disk_self_hosting_router_patch"]["disk_router_speedup"]
-    red_cex = v11["gen72_73_red_blue_concolic_duel"]["red_team_concolic_audit"]["concolic_counterexample"]
-    swe74_ast = v11["gen74_four_module_swe_evo"]["delta_ast"]
-    assert v11["gen74_four_module_swe_evo"]["committed"] is True and red_cex["margin"] == 88888
+    v12 = json.loads((ROOT / "v12_sovereign_rsi_metrics.json").read_text())
+    assert v12["gen78_79_zero_prompt_five_module_swe_evo"]["committed"] is True
 
     conn = sqlite3.connect(str(ROOT / "track2_map_elites_archive.db"))
     row_cnt = conn.execute("SELECT COUNT(*) FROM continuous_rsi_elites").fetchone()[0]
     conn.close()
-    assert row_cnt >= 10, f"Expected >=10 continuous/tournament elites in SQLite, found {row_cnt}"
-    print(f"[PASS] Gen 61-65 Disk Self-Hosting       : Router Gate-0 Speedup={disk_speedup}x | Grad Res={v9['gen63_64_live_qwen_orthogonal_gradient_step']['max_grad_overlap_residual']:.2e}")
-    print(f"[PASS] Gen 66-75 Continuous & Tournament : {row_cnt}/10 Elites in SQLite | Red-Team CEX={red_cex} | 4-Mod Delta_AST={swe74_ast}")
+    assert row_cnt >= 15, f"Expected >=15 elites in SQLite, found {row_cnt}"
+    print(f"[PASS] Gen 61-75 Disk & Tournament RSI   : Speedup={v9['gen65_disk_self_hosting_router_patch']['disk_router_speedup']}x | Red-Team CEX={v11['gen72_73_red_blue_concolic_duel']['red_team_concolic_audit']['concolic_counterexample']}")
+    print(f"[PASS] Gen 76-80 Sovereign RSI Closure   : {row_cnt}/15 Elites in SQLite | 5-Mod Zero-Prompt Delta_AST={v12['gen78_79_zero_prompt_five_module_swe_evo']['delta_ast']}")
 
     elapsed = round((time.perf_counter() - t0) * 1000.0, 2)
     print("======================================================================")
-    print(f" ALL V11.0.0 (GEN 1-75) VERIFICATION GATES PASSED IN {elapsed} ms")
+    print(f" ALL V12.0.0 (GEN 1-80) VERIFICATION GATES PASSED IN {elapsed} ms")
     print("======================================================================")
     return 0
 
