@@ -1,0 +1,97 @@
+{
+  "benchmark": "v14.0-part1 Zero-Fallback Multi-Turn Traceback & Shadow Self-Repair Closure (Generations 86-88)",
+  "gen86_static_fallback_audit": {
+    "fallback_strings_in_codebase": 0,
+    "introspected_primitive_signatures": 12
+  },
+  "gen87_live_multiturn_self_repair": {
+    "passed_after_repair": true,
+    "turns_used": 1,
+    "total_tokens": 63,
+    "repair_trace": [
+      {
+        "turn": 0,
+        "failure_type": "INVARIANT_BREACH",
+        "diagnostic": "[TIER1_PUBLIC] Output mismatch on test #0: expected 4.0, got 2.0. Check scaling factor and primitive call."
+      }
+    ]
+  },
+  "gen88_zero_fallback_external_ab": {
+    "zero_fallback_enforced": true,
+    "total_tasks": 5,
+    "raw_baseline_pass_rate": 0.4,
+    "bilevel_harness_pass_rate": 1.0,
+    "mean_raw_tokens": 131.2,
+    "mean_harness_tokens": 107.8,
+    "tasks": [
+      {
+        "task_id": "HE_LCB_01_trapping_rain_water",
+        "raw_baseline_vault_passed": true,
+        "bilevel_harness_vault_passed": true,
+        "repair_turns_used": 0,
+        "raw_tokens": 147,
+        "harness_tokens": 137,
+        "harness_latency_ms": 11465.64
+      },
+      {
+        "task_id": "HE_LCB_02_weighted_hamming_alignment",
+        "raw_baseline_vault_passed": true,
+        "bilevel_harness_vault_passed": true,
+        "repair_turns_used": 0,
+        "raw_tokens": 72,
+        "harness_tokens": 61,
+        "harness_latency_ms": 4855.8
+      },
+      {
+        "task_id": "HE_LCB_03_kahan_peak_burst",
+        "raw_baseline_vault_passed": false,
+        "bilevel_harness_vault_passed": true,
+        "repair_turns_used": 0,
+        "raw_tokens": 125,
+        "harness_tokens": 48,
+        "harness_latency_ms": 3771.19
+      },
+      {
+        "task_id": "HE_LCB_04_network_bottleneck_capacity",
+        "raw_baseline_vault_passed": false,
+        "bilevel_harness_vault_passed": true,
+        "repair_turns_used": 3,
+        "raw_tokens": 132,
+        "harness_tokens": 243,
+        "harness_latency_ms": 20345.93
+      },
+      {
+        "task_id": "HE_LCB_05_distinct_subsequence_count",
+        "raw_baseline_vault_passed": false,
+        "bilevel_harness_vault_passed": true,
+        "repair_turns_used": 0,
+        "raw_tokens": 180,
+        "harness_tokens": 50,
+        "harness_latency_ms": 3873.89
+      }
+    ]
+  },
+  "generations_86_to_88_elites": [
+    {
+      "generation": 86,
+      "task_id": "gen86_zero_fallback_static_audit",
+      "pareto_score": 0.957533,
+      "sha256": "e423a93024bcf2d5",
+      "archive_elites_logged": 22
+    },
+    {
+      "generation": 87,
+      "task_id": "gen87_live_multiturn_traceback_self_repair",
+      "pareto_score": 0.929184,
+      "sha256": "27939211860fc772",
+      "archive_elites_logged": 22
+    },
+    {
+      "generation": 88,
+      "task_id": "gen88_external_ab_zero_fallback_100pct",
+      "pareto_score": 0.939315,
+      "sha256": "373058fdeca89cb0",
+      "archive_elites_logged": 23
+    }
+  ]
+}
