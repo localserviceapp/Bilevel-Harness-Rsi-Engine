@@ -1,8 +1,8 @@
-# Bi-Level Harness Optimization & Textual Backpropagation in Autonomous 4-Loop RSI Engines (`v13.0.0` — 85-Generation Production RSI Closure)
+# Think Outside the Weights: Bi-Level Harness Optimization & Textual Backpropagation in Autonomous 4-Loop RSI Engines (`v13.0.0` — 85-Generation Production Closure)
 
 **Authors:** Yasemin Gavares & Alexander Gavares  
 **Affiliation:** Autonomous Agent Architecture Research Group — Local Service App Inc / Kronoz Technologies LLC  
-**Paper:** [`Bi_level_harness_engine_v13.pdf`](./Bi_level_harness_engine_v13.pdf) (LaTeX source: [`main.tex`](./main.tex))
+**Paper:** [`Think_outside_the_weights_bi_level_harness_engine.pdf`](./Think_outside_the_weights_bi_level_harness_engine.pdf) (LaTeX source: [`main.tex`](./main.tex))
 
 ---
 
