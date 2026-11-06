@@ -44,3 +44,11 @@ def dfa_penalized_divergence(token: str, c0: int, c1: int, s1: str, s2: str, wei
 
 def adaptive_horizon_flux(series: list[float], s1: str, s2: str, weights: list[float], scale: float) -> float:
     return (kahan_max_subarray(series) - weighted_mismatch_cost(s1, s2, weights)) * scale
+
+
+def pareto_equilibrium_score(series: list[float], adj: dict, route: list[int], log: str, sig: str, s1: str, s2: str, weights: list[float], scale: float) -> float:
+    return autonomous_corridor_utility(series, adj, route, log, sig, scale) + adaptive_horizon_flux(series, s1, s2, weights, scale)
+
+
+def concolic_verified_dispatch(series: list[float], adj: dict, route: list[int], token: str, s1: str, s2: str, weights: list[float], scale: float) -> float:
+    return stabilized_route_margin(series, adj, route, scale) + dfa_penalized_divergence(token, 1, 2, s1, s2, weights, scale)

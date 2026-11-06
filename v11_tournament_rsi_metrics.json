@@ -1,0 +1,145 @@
+{
+  "benchmark": "v11.0 Multi-Agent Orthogonal Tournament Arena & Red/Blue Concolic Duel (Generations 71-75)",
+  "total_crystallized_primitives_on_disk": 11,
+  "crystallized_primitive_names": [
+    "adaptive_horizon_flux",
+    "autonomous_corridor_utility",
+    "concolic_verified_dispatch",
+    "count_target_subseq",
+    "dfa_penalized_divergence",
+    "dfa_weighted_transitions",
+    "kahan_max_subarray",
+    "pareto_equilibrium_score",
+    "stabilized_route_margin",
+    "weighted_mismatch_cost",
+    "widest_path_capacity"
+  ],
+  "three_expert_subspace_bank": {
+    "orthogonal_experts_spawned": 3,
+    "lora_layers_verified": 196,
+    "max_three_expert_qr_residual": 7.239943035028932e-15,
+    "subspace_bank_time_ms": 1166.41
+  },
+  "gen71_tournament_1": {
+    "tournament_id": "gen71_pareto_equilibrium",
+    "z3_universal_status": "UNSAT_PROVED_UNIVERSAL",
+    "candidates_evaluated": 2,
+    "winning_expert": "expert1_compact_lora",
+    "winning_pareto_score": 0.886358,
+    "winning_tokens": 108,
+    "winning_latency_ms": 12104.86,
+    "scoreboard": [
+      {
+        "expert_id": "expert1_compact_lora",
+        "passed": true,
+        "tokens": 108,
+        "latency_ms": 12104.86,
+        "ast_nodes": 75,
+        "pareto_score": 0.886358
+      },
+      {
+        "expert_id": "expert2_verbose_lora",
+        "passed": true,
+        "tokens": 123,
+        "latency_ms": 10449.59,
+        "ast_nodes": 93,
+        "pareto_score": 0.881412
+      }
+    ]
+  },
+  "gen72_73_red_blue_concolic_duel": {
+    "red_team_concolic_audit": {
+      "passed": false,
+      "branches_solved": 1,
+      "concolic_counterexample": {
+        "margin": 88888,
+        "div": 19191,
+        "scale": 5651582
+      },
+      "solve_time_ms": 14.803
+    },
+    "blue_team_tournament": {
+      "tournament_id": "gen72_73_red_blue_duel",
+      "z3_universal_status": "UNSAT_PROVED_UNIVERSAL",
+      "candidates_evaluated": 1,
+      "winning_expert": "blue_team_concolic_verified_lora",
+      "winning_pareto_score": 0.892771,
+      "winning_tokens": 110,
+      "winning_latency_ms": 9287.91,
+      "scoreboard": [
+        {
+          "expert_id": "blue_team_concolic_verified_lora",
+          "passed": true,
+          "tokens": 110,
+          "latency_ms": 9287.91,
+          "ast_nodes": 70,
+          "pareto_score": 0.892771
+        }
+      ]
+    }
+  },
+  "gen74_four_module_swe_evo": {
+    "delta_slice": {
+      "pkg_corridor": 0,
+      "pkg_equilibrium": 1,
+      "pkg_dispatch": 0,
+      "pkg_arena_router": 1
+    },
+    "committed": true,
+    "delta_ast": 0.3298
+  },
+  "gen75_tournament_consolidation": {
+    "orthogonal_trainer": {
+      "rollouts_consumed": 10,
+      "live_loss": 3.3125,
+      "live_grad_projected_layers": 196,
+      "max_grad_overlap_residual": 6.372460814167653e-17,
+      "step_time_ms": 694.38
+    },
+    "relora_folding": {
+      "layers_folded": 196,
+      "banks_merged": 3,
+      "max_forward_equivalence_drift": 2.6226043701171875e-06,
+      "lora_b_zero_reset_verified": true,
+      "fresh_orthogonal_slots_unlocked": 96,
+      "consolidation_time_ms": 13.28
+    }
+  },
+  "generations_71_to_75_elites": [
+    {
+      "generation": 71,
+      "task_id": "gen71_pareto_equilibrium_score",
+      "pareto_score": 0.906422,
+      "sha256": "36451b3cc8226b5f",
+      "archive_elites_logged": 6
+    },
+    {
+      "generation": 72,
+      "task_id": "gen72_concolic_verified_dispatch",
+      "pareto_score": 0.911923,
+      "sha256": "cc337acf9816f052",
+      "archive_elites_logged": 7
+    },
+    {
+      "generation": 73,
+      "task_id": "gen73_red_team_trojan_disqualified",
+      "pareto_score": 0.942302,
+      "sha256": "cc337acf9816f052",
+      "archive_elites_logged": 8
+    },
+    {
+      "generation": 74,
+      "task_id": "gen74_swe_evo_4module_arena",
+      "pareto_score": 0.85338,
+      "sha256": "d097db9d9b570a86",
+      "archive_elites_logged": 9
+    },
+    {
+      "generation": 75,
+      "task_id": "gen75_tournament_relora_consolidation",
+      "pareto_score": 0.873498,
+      "sha256": "ecf71bb989b74b24",
+      "archive_elites_logged": 10
+    }
+  ]
+}
