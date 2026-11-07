@@ -1,0 +1,1691 @@
+{
+  "benchmark": "v14.0 Full 164-Task OpenAI HumanEval Zero-Fallback Closure (Generations 89-90)",
+  "model_id": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+  "total_tasks": 164,
+  "raw_baseline_solved": 107,
+  "raw_baseline_pass_at_1": 0.6524,
+  "bilevel_harness_solved": 149,
+  "bilevel_harness_pass_at_1": 0.9085,
+  "absolute_pass_rate_lift_pct": 25.61,
+  "net_tasks_rescued_by_harness": 42,
+  "per_task_results": [
+    {
+      "task_id": "HumanEval/0",
+      "entry_point": "has_close_elements",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 68,
+      "harness_tokens": 172,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/1",
+      "entry_point": "separate_paren_groups",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 103,
+      "harness_tokens": 200,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/2",
+      "entry_point": "truncate_number",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 22,
+      "harness_tokens": 91,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/3",
+      "entry_point": "below_zero",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 52,
+      "harness_tokens": 152,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/4",
+      "entry_point": "mean_absolute_deviation",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 163,
+      "harness_tokens": 171,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/5",
+      "entry_point": "intersperse",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 66,
+      "harness_tokens": 128,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/6",
+      "entry_point": "parse_nested_parens",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 147,
+      "harness_tokens": 244,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/7",
+      "entry_point": "filter_by_substring",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 40,
+      "harness_tokens": 104,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/8",
+      "entry_point": "sum_product",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 75,
+      "harness_tokens": 158,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/9",
+      "entry_point": "rolling_max",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 80,
+      "harness_tokens": 230,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/10",
+      "entry_point": "make_palindrome",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 212,
+      "harness_tokens": 1036,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/11",
+      "entry_point": "string_xor",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 119,
+      "harness_tokens": 168,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/12",
+      "entry_point": "longest",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 78,
+      "harness_tokens": 158,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/13",
+      "entry_point": "greatest_common_divisor",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 43,
+      "harness_tokens": 106,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/14",
+      "entry_point": "all_prefixes",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 43,
+      "harness_tokens": 79,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/15",
+      "entry_point": "string_sequence",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 28,
+      "harness_tokens": 80,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/16",
+      "entry_point": "count_distinct_characters",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 79,
+      "harness_tokens": 76,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/17",
+      "entry_point": "parse_music",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 156,
+      "harness_tokens": 1091,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/18",
+      "entry_point": "how_many_times",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 83,
+      "harness_tokens": 100,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/19",
+      "entry_point": "sort_numbers",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 2,
+      "raw_tokens": 170,
+      "harness_tokens": 1485,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/20",
+      "entry_point": "find_closest_elements",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 199,
+      "harness_tokens": 203,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/21",
+      "entry_point": "rescale_to_unit",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 59,
+      "harness_tokens": 206,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/22",
+      "entry_point": "filter_integers",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 39,
+      "harness_tokens": 104,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/23",
+      "entry_point": "strlen",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 19,
+      "harness_tokens": 47,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/24",
+      "entry_point": "largest_divisor",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 72,
+      "harness_tokens": 96,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/25",
+      "entry_point": "factorize",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 139,
+      "harness_tokens": 199,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/26",
+      "entry_point": "remove_duplicates",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 3,
+      "raw_tokens": 58,
+      "harness_tokens": 1309,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/27",
+      "entry_point": "flip_case",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 36,
+      "harness_tokens": 68,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/28",
+      "entry_point": "concatenate",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 62,
+      "harness_tokens": 62,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/29",
+      "entry_point": "filter_by_prefix",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 40,
+      "harness_tokens": 99,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/30",
+      "entry_point": "get_positive",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 26,
+      "harness_tokens": 39,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/31",
+      "entry_point": "is_prime",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 72,
+      "harness_tokens": 72,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/32",
+      "entry_point": "find_zero",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 1,
+      "raw_tokens": 260,
+      "harness_tokens": 4042,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/33",
+      "entry_point": "sort_third",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 119,
+      "harness_tokens": 258,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/34",
+      "entry_point": "unique",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 27,
+      "harness_tokens": 92,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/35",
+      "entry_point": "max_element",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 16,
+      "harness_tokens": 43,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/36",
+      "entry_point": "fizz_buzz",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 66,
+      "harness_tokens": 66,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/37",
+      "entry_point": "sort_even",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 110,
+      "harness_tokens": 106,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/38",
+      "entry_point": "decode_cyclic",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 140,
+      "harness_tokens": 794,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/39",
+      "entry_point": "prime_fib",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 1,
+      "raw_tokens": 98,
+      "harness_tokens": 3643,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/40",
+      "entry_point": "triples_sum_to_zero",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 116,
+      "harness_tokens": 116,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/41",
+      "entry_point": "car_race_collision",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 23,
+      "harness_tokens": 555,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/42",
+      "entry_point": "incr_list",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 27,
+      "harness_tokens": 38,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/43",
+      "entry_point": "pairs_sum_to_zero",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 54,
+      "harness_tokens": 187,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/44",
+      "entry_point": "change_base",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 83,
+      "harness_tokens": 79,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/45",
+      "entry_point": "triangle_area",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 38,
+      "harness_tokens": 74,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/46",
+      "entry_point": "fib4",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 116,
+      "harness_tokens": 276,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/47",
+      "entry_point": "median",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 3,
+      "raw_tokens": 83,
+      "harness_tokens": 1583,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/48",
+      "entry_point": "is_palindrome",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 24,
+      "harness_tokens": 80,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/49",
+      "entry_point": "modp",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 80,
+      "harness_tokens": 115,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/50",
+      "entry_point": "decode_shift",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 64,
+      "harness_tokens": 457,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/51",
+      "entry_point": "remove_vowels",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 139,
+      "harness_tokens": 140,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/52",
+      "entry_point": "below_threshold",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 30,
+      "harness_tokens": 30,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/53",
+      "entry_point": "add",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 24,
+      "harness_tokens": 62,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/54",
+      "entry_point": "same_chars",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 1,
+      "raw_tokens": 32,
+      "harness_tokens": 525,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/55",
+      "entry_point": "fib",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 67,
+      "harness_tokens": 68,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/56",
+      "entry_point": "correct_bracketing",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 64,
+      "harness_tokens": 64,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/57",
+      "entry_point": "monotonic",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 52,
+      "harness_tokens": 52,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/58",
+      "entry_point": "common",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 40,
+      "harness_tokens": 51,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/59",
+      "entry_point": "largest_prime_factor",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 2,
+      "raw_tokens": 168,
+      "harness_tokens": 1210,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/60",
+      "entry_point": "sum_to_n",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 30,
+      "harness_tokens": 72,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/61",
+      "entry_point": "correct_bracketing",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 70,
+      "harness_tokens": 64,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/62",
+      "entry_point": "derivative",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 28,
+      "harness_tokens": 128,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/63",
+      "entry_point": "fibfib",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 91,
+      "harness_tokens": 226,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/64",
+      "entry_point": "vowels_count",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 260,
+      "harness_tokens": 1120,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/65",
+      "entry_point": "circular_shift",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 1,
+      "raw_tokens": 92,
+      "harness_tokens": 536,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/66",
+      "entry_point": "digitSum",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 24,
+      "harness_tokens": 134,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/67",
+      "entry_point": "fruit_distribution",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 1,
+      "raw_tokens": 260,
+      "harness_tokens": 4273,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/68",
+      "entry_point": "pluck",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 100,
+      "harness_tokens": 406,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/69",
+      "entry_point": "search",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 44,
+      "harness_tokens": 156,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/70",
+      "entry_point": "strange_sort_list",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 260,
+      "harness_tokens": 300,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/71",
+      "entry_point": "triangle_area",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 130,
+      "harness_tokens": 244,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/72",
+      "entry_point": "will_it_fly",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 246,
+      "harness_tokens": 984,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/73",
+      "entry_point": "smallest_change",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 158,
+      "harness_tokens": 214,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/74",
+      "entry_point": "total_match",
+      "raw_passed": false,
+      "harness_passed": false,
+      "repair_turns_used": 1,
+      "raw_tokens": 222,
+      "harness_tokens": 4666,
+      "vault_status": "AssertionError: "
+    },
+    {
+      "task_id": "HumanEval/75",
+      "entry_point": "is_multiply_prime",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 1,
+      "raw_tokens": 216,
+      "harness_tokens": 3566,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/76",
+      "entry_point": "is_simple_power",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 1,
+      "raw_tokens": 104,
+      "harness_tokens": 2961,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/77",
+      "entry_point": "iscube",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 146,
+      "harness_tokens": 146,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/78",
+      "entry_point": "hex_key",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 74,
+      "harness_tokens": 74,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/79",
+      "entry_point": "decimal_to_binary",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 92,
+      "harness_tokens": 851,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/80",
+      "entry_point": "is_happy",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 3,
+      "raw_tokens": 40,
+      "harness_tokens": 1954,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/81",
+      "entry_point": "numerical_letter_grade",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 5,
+      "raw_tokens": 171,
+      "harness_tokens": 12393,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/82",
+      "entry_point": "prime_length",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 163,
+      "harness_tokens": 163,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/83",
+      "entry_point": "starts_one_ends",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 1,
+      "raw_tokens": 131,
+      "harness_tokens": 3379,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/84",
+      "entry_point": "solve",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 138,
+      "harness_tokens": 724,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/85",
+      "entry_point": "add",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 38,
+      "harness_tokens": 365,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/86",
+      "entry_point": "anti_shuffle",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 122,
+      "harness_tokens": 202,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/87",
+      "entry_point": "get_row",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 64,
+      "harness_tokens": 1056,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/88",
+      "entry_point": "sort_array",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 260,
+      "harness_tokens": 260,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/89",
+      "entry_point": "encrypt",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 96,
+      "harness_tokens": 1030,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/90",
+      "entry_point": "next_smallest",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 68,
+      "harness_tokens": 219,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/91",
+      "entry_point": "is_bored",
+      "raw_passed": false,
+      "harness_passed": false,
+      "repair_turns_used": 1,
+      "raw_tokens": 71,
+      "harness_tokens": 3047,
+      "vault_status": "AssertionError: Test 2"
+    },
+    {
+      "task_id": "HumanEval/92",
+      "entry_point": "any_int",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 52,
+      "harness_tokens": 791,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/93",
+      "entry_point": "encode",
+      "raw_passed": false,
+      "harness_passed": false,
+      "repair_turns_used": 5,
+      "raw_tokens": 116,
+      "harness_tokens": 9519,
+      "vault_status": "ValueError: The encoding process did not produce any changes within the specified limit."
+    },
+    {
+      "task_id": "HumanEval/94",
+      "entry_point": "skjkasdkd",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 64,
+      "harness_tokens": 528,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/95",
+      "entry_point": "check_dict_case",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 1,
+      "raw_tokens": 56,
+      "harness_tokens": 1303,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/96",
+      "entry_point": "count_up_to",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 36,
+      "harness_tokens": 1072,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/97",
+      "entry_point": "multiply",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 68,
+      "harness_tokens": 170,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/98",
+      "entry_point": "count_upper",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 100,
+      "harness_tokens": 104,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/99",
+      "entry_point": "closest_integer",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 1,
+      "raw_tokens": 260,
+      "harness_tokens": 1200,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/100",
+      "entry_point": "make_a_pile",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 124,
+      "harness_tokens": 1036,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/101",
+      "entry_point": "words_string",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 2,
+      "raw_tokens": 38,
+      "harness_tokens": 873,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/102",
+      "entry_point": "choose_num",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 1,
+      "raw_tokens": 64,
+      "harness_tokens": 3071,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/103",
+      "entry_point": "rounded_avg",
+      "raw_passed": false,
+      "harness_passed": false,
+      "repair_turns_used": 5,
+      "raw_tokens": 56,
+      "harness_tokens": 9025,
+      "vault_status": "AssertionError: "
+    },
+    {
+      "task_id": "HumanEval/104",
+      "entry_point": "unique_digits",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 76,
+      "harness_tokens": 182,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/105",
+      "entry_point": "by_length",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 210,
+      "harness_tokens": 1032,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/106",
+      "entry_point": "f",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 68,
+      "harness_tokens": 184,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/107",
+      "entry_point": "even_odd_palindrome",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 143,
+      "harness_tokens": 143,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/108",
+      "entry_point": "count_nums",
+      "raw_passed": false,
+      "harness_passed": false,
+      "repair_turns_used": 1,
+      "raw_tokens": 74,
+      "harness_tokens": 2911,
+      "vault_status": "AssertionError: "
+    },
+    {
+      "task_id": "HumanEval/109",
+      "entry_point": "move_one_ball",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 122,
+      "harness_tokens": 122,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/110",
+      "entry_point": "exchange",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 200,
+      "harness_tokens": 200,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/111",
+      "entry_point": "histogram",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 104,
+      "harness_tokens": 971,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/112",
+      "entry_point": "reverse_delete",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 78,
+      "harness_tokens": 912,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/113",
+      "entry_point": "odd_count",
+      "raw_passed": false,
+      "harness_passed": false,
+      "repair_turns_used": 5,
+      "raw_tokens": 75,
+      "harness_tokens": 11132,
+      "vault_status": "AssertionError: Test 1"
+    },
+    {
+      "task_id": "HumanEval/114",
+      "entry_point": "minSubArraySum",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 71,
+      "harness_tokens": 71,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/115",
+      "entry_point": "max_fill",
+      "raw_passed": false,
+      "harness_passed": false,
+      "repair_turns_used": 1,
+      "raw_tokens": 36,
+      "harness_tokens": 3171,
+      "vault_status": "AssertionError: Error"
+    },
+    {
+      "task_id": "HumanEval/116",
+      "entry_point": "sort_array",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 4,
+      "raw_tokens": 40,
+      "harness_tokens": 1963,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/117",
+      "entry_point": "select_words",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 80,
+      "harness_tokens": 1016,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/118",
+      "entry_point": "get_closest_vowel",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 1,
+      "raw_tokens": 244,
+      "harness_tokens": 1888,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/119",
+      "entry_point": "match_parens",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 172,
+      "harness_tokens": 172,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/120",
+      "entry_point": "maximum",
+      "raw_passed": false,
+      "harness_passed": false,
+      "repair_turns_used": 1,
+      "raw_tokens": 59,
+      "harness_tokens": 3424,
+      "vault_status": "IndexError: list index out of range"
+    },
+    {
+      "task_id": "HumanEval/121",
+      "entry_point": "solution",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 38,
+      "harness_tokens": 772,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/122",
+      "entry_point": "add_elements",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 159,
+      "harness_tokens": 736,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/123",
+      "entry_point": "get_odd_collatz",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 194,
+      "harness_tokens": 194,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/124",
+      "entry_point": "valid_date",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 1,
+      "raw_tokens": 255,
+      "harness_tokens": 1330,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/125",
+      "entry_point": "split_words",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 107,
+      "harness_tokens": 107,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/126",
+      "entry_point": "is_sorted",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 1,
+      "raw_tokens": 260,
+      "harness_tokens": 3901,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/127",
+      "entry_point": "intersection",
+      "raw_passed": false,
+      "harness_passed": false,
+      "repair_turns_used": 5,
+      "raw_tokens": 166,
+      "harness_tokens": 8713,
+      "vault_status": "AssertionError: "
+    },
+    {
+      "task_id": "HumanEval/128",
+      "entry_point": "prod_signs",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 96,
+      "harness_tokens": 96,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/129",
+      "entry_point": "minPath",
+      "raw_passed": false,
+      "harness_passed": false,
+      "repair_turns_used": 1,
+      "raw_tokens": 224,
+      "harness_tokens": 4909,
+      "vault_status": "ExecutionTimeoutError: Execution exceeded time limit (infinite loop or exponential recursion)"
+    },
+    {
+      "task_id": "HumanEval/130",
+      "entry_point": "tri",
+      "raw_passed": false,
+      "harness_passed": false,
+      "repair_turns_used": 5,
+      "raw_tokens": 260,
+      "harness_tokens": 10662,
+      "vault_status": "IndexError: list index out of range"
+    },
+    {
+      "task_id": "HumanEval/131",
+      "entry_point": "digits",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 139,
+      "harness_tokens": 139,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/132",
+      "entry_point": "is_nested",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 4,
+      "raw_tokens": 147,
+      "harness_tokens": 3364,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/133",
+      "entry_point": "sum_squares",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 72,
+      "harness_tokens": 818,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/134",
+      "entry_point": "check_if_last_char_is_a_letter",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 198,
+      "harness_tokens": 198,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/135",
+      "entry_point": "can_arrange",
+      "raw_passed": false,
+      "harness_passed": false,
+      "repair_turns_used": 1,
+      "raw_tokens": 42,
+      "harness_tokens": 2880,
+      "vault_status": "AssertionError: "
+    },
+    {
+      "task_id": "HumanEval/136",
+      "entry_point": "largest_smallest_integers",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 216,
+      "harness_tokens": 228,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/137",
+      "entry_point": "compare_one",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 1,
+      "raw_tokens": 115,
+      "harness_tokens": 3282,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/138",
+      "entry_point": "is_equal_to_sum_even",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 44,
+      "harness_tokens": 786,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/139",
+      "entry_point": "special_factorial",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 44,
+      "harness_tokens": 152,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/140",
+      "entry_point": "fix_spaces",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 60,
+      "harness_tokens": 60,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/141",
+      "entry_point": "file_name_check",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 1,
+      "raw_tokens": 60,
+      "harness_tokens": 3720,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/142",
+      "entry_point": "sum_squares",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 1,
+      "raw_tokens": 70,
+      "harness_tokens": 3585,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/143",
+      "entry_point": "words_in_sentence",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 204,
+      "harness_tokens": 915,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/144",
+      "entry_point": "simplify",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 86,
+      "harness_tokens": 96,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/145",
+      "entry_point": "order_by_points",
+      "raw_passed": false,
+      "harness_passed": false,
+      "repair_turns_used": 5,
+      "raw_tokens": 66,
+      "harness_tokens": 7448,
+      "vault_status": "AssertionError: "
+    },
+    {
+      "task_id": "HumanEval/146",
+      "entry_point": "specialFilter",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 79,
+      "harness_tokens": 194,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/147",
+      "entry_point": "get_max_triples",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 1,
+      "raw_tokens": 242,
+      "harness_tokens": 4158,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/148",
+      "entry_point": "bf",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 1,
+      "raw_tokens": 260,
+      "harness_tokens": 3204,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/149",
+      "entry_point": "sorted_list_sum",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 99,
+      "harness_tokens": 924,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/150",
+      "entry_point": "x_or_y",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 150,
+      "harness_tokens": 184,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/151",
+      "entry_point": "double_the_difference",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 168,
+      "harness_tokens": 188,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/152",
+      "entry_point": "compare",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 28,
+      "harness_tokens": 248,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/153",
+      "entry_point": "Strongest_Extension",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 116,
+      "harness_tokens": 180,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/154",
+      "entry_point": "cycpattern_check",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 171,
+      "harness_tokens": 1078,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/155",
+      "entry_point": "even_odd_count",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 115,
+      "harness_tokens": 648,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/156",
+      "entry_point": "int_to_mini_roman",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 167,
+      "harness_tokens": 280,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/157",
+      "entry_point": "right_angle_triangle",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 83,
+      "harness_tokens": 211,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/158",
+      "entry_point": "find_max",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 94,
+      "harness_tokens": 208,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/159",
+      "entry_point": "eat",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 1,
+      "raw_tokens": 260,
+      "harness_tokens": 4063,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/160",
+      "entry_point": "do_algebra",
+      "raw_passed": false,
+      "harness_passed": false,
+      "repair_turns_used": 5,
+      "raw_tokens": 127,
+      "harness_tokens": 10797,
+      "vault_status": "AssertionError: "
+    },
+    {
+      "task_id": "HumanEval/161",
+      "entry_point": "solve",
+      "raw_passed": false,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 99,
+      "harness_tokens": 195,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/162",
+      "entry_point": "string_to_md5",
+      "raw_passed": true,
+      "harness_passed": true,
+      "repair_turns_used": 0,
+      "raw_tokens": 34,
+      "harness_tokens": 107,
+      "vault_status": "PASS"
+    },
+    {
+      "task_id": "HumanEval/163",
+      "entry_point": "generate_integers",
+      "raw_passed": false,
+      "harness_passed": false,
+      "repair_turns_used": 1,
+      "raw_tokens": 260,
+      "harness_tokens": 3905,
+      "vault_status": "AssertionError: Test 3"
+    }
+  ],
+  "ablation_progression": {
+    "raw_1_5b_single_pass": {
+      "solved": 107,
+      "pass_at_1": 0.6524
+    },
+    "initial_harness_v1": {
+      "solved": 116,
+      "pass_at_1": 0.7073
+    },
+    "stage1_zero_destruction": {
+      "solved": 133,
+      "pass_at_1": 0.811
+    },
+    "stage2_4persona_codet": {
+      "solved": 143,
+      "pass_at_1": 0.872
+    },
+    "stage3_system2_final_closure": {
+      "solved": 149,
+      "pass_at_1": 0.9085
+    }
+  },
+  "generations_89_to_90_elites": [
+    {
+      "generation": 89,
+      "task_id": "gen89_7idiom_doctest_codet_consensus",
+      "pareto_score": 0.929519,
+      "sha256": "d9e5c843c0c72dc4",
+      "archive_elites_logged": 25
+    },
+    {
+      "generation": 90,
+      "task_id": "gen90_system2_prose_gate_90plus_closure",
+      "pareto_score": 0.926564,
+      "sha256": "f5464b78c2ca096c",
+      "archive_elites_logged": 25
+    }
+  ]
+}
