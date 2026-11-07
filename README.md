@@ -1,8 +1,8 @@
-# Think Outside the Weights: Bi-Level Harness Optimization & Tri-Level ReLoRA Recursive Self-Improvement (RSI)
+# Think Outside the Weights: Bi-Level Harness Optimization and Tri-Level ReLoRA Consolidation for Autonomous Recursive Self-Improvement in LLM Agents
 
 **Authors:** Yasemin Gavares, Alexander Gavares  
 **Affiliations:** Local Service App Inc. (Local AI) & Autonomous Agent Architecture Research Group  
-**Foundation Model Trunk:** Qwen/Qwen2.5-Coder-1.5B-Instruct (CUDA In-Place ReLoRA Weight Consolidation)
+**Foundation Model Trunk:** `Qwen/Qwen2.5-Coder-1.5B-Instruct` (CUDA In-Place ReLoRA Weight Consolidation)
 
 [![HumanEval](https://img.shields.io/badge/HumanEval-164%2F164_(100.0%25)-brightgreen)](#5-empirical-results-m0-to-m6-progression-gen-90-to-gen-98)
 [![Repo Benchmark](https://img.shields.io/badge/Repo_Benchmark-20%2F20_(100.0%25)-brightgreen)](#5-empirical-results-m0-to-m6-progression-gen-90-to-gen-98)
@@ -21,7 +21,7 @@ Autonomous Large Language Model (LLM) code agents face a fundamental tension bet
 
 **Think Outside the Weights** resolves both bottlenecks through a unified **4-Loop Recursive Self-Improvement (RSI) Engine**. The system first evolves its external cognitive harness over Directed Acyclic Graphs (DAGs) inside a 4-layer kernel-hardened execution sandbox, and then continuously internalizes verified multi-turn System-2 repairs into System-1 parametric intuition via sequential **ReLoRA trunk merges** and **Tri-Level Curriculum-Trainer Self-Adaptation**.
 
-Across 98 generations culminating in six weight-consolidated model states (M0 to M6) on `Qwen/Qwen2.5-Coder-1.5B-Instruct`, this architecture:
+Across 98 generations culminating in six weight-consolidated model states (`M0` to `M6`) on `Qwen/Qwen2.5-Coder-1.5B-Instruct`, this architecture:
 * Elevates **HumanEval Pass@1 from 90.85% (149/164) to 100.00% (164/164)** by rescuing all 15 unseen holdout tasks out-of-distribution using strictly disjoint stepping-stone curricula.
 * Breaks a 95-generation multi-file repository plateau, advancing the **Repo Benchmark from 17/20 (85.0%) to 20/20 (100.0%)** via synthetic 3-way Abstract Syntax Tree (AST) repository fission.
 * Increases zero-shot **Turn-0 Autonomy from 68.90% (M0) to 96.95% (M6)**, converting multi-turn repair loops into immediate first-pass execution.
@@ -72,27 +72,35 @@ To prevent reward hacking, environment tampering, or sandbox escape during auton
 ### 4.1 Regime I: Outer-Loop Harness Evolution (Generations 1 to 90, M0)
 During Generations 1 through 90, the foundation model parameters $\theta_0$ remain frozen while Loops 1--3 optimize the non-parametric harness $H_k$:
 
-$$H_{k+1} = \text{arg max}_{H \in \mathcal{H}} \; \mathbb{E}_{x \sim D_0} \Big[ \mathcal{V}\big(\tau \sim \pi_{\theta_0}(\cdot \mid x, H)\big) - \lambda_{\text{tok}} |\tau| \Big]$$
+$$
+H_{k+1} = \underset{H \in \mathcal{H}}{\operatorname{arg\,max}} \; \mathbb{E}_{x \sim D_0} \Big[ \mathcal{V}\big(\tau \sim \pi_{\theta_0}(\cdot \mid x, H)\big) - \lambda_{\text{tok}} \vert \tau \vert \Big]
+$$
 
 At Generation 90 (`M0_Base_Plus_Harness`), the evolved harness reaches **90.85% (149/164)** on HumanEval and **17/20** on Repo tasks, but relies on multi-turn repair loops (**68.90% Turn-0 Autonomy**, **612.4 mean tokens**).
 
 ### 4.2 Regime II: Bi-Level ReLoRA Consolidation & The Asymptotic Plateau (Generations 93 to 95, M1 to M3)
-In Regime II, verified trajectories harvested by the harness ($\mathcal{V}(\tau) = 1$) are distilled into the base trunk across sequential ReLoRA generations ($r=16$, Attention projections `q_proj, k_proj, v_proj, o_proj`). At the end of each generation $k$, the low-rank update is folded permanently into the base linear weights before re-initializing $A_{k+1} \sim \mathcal{U}(\text{Kaiming}), B_{k+1} = 0$:
+In Regime II, verified trajectories harvested by the harness ($\mathcal{V}(\tau) = 1$) are distilled into the base trunk across sequential ReLoRA generations ($r=16$, Attention projections `q_proj, k_proj, v_proj, o_proj`). At the end of each generation $k$, the low-rank update is folded permanently into the base linear weights before re-initializing $A_{k+1} \sim \mathcal{U}(\text{Kaiming})$ and $B_{k+1} = 0$:
 
-$$W_{\text{trunk}}^{(k+1)} \leftarrow W_{\text{trunk}}^{(k)} + \frac{\alpha}{r} B_k^* A_k^*, \qquad \|\Delta W_{\text{trunk}}^{(k)}\|_F = \left\| \frac{\alpha}{r} B_k^* A_k^* \right\|_F > 0$$
+$$
+{W_{\text{trunk}}}^{(k+1)} \leftarrow {W_{\text{trunk}}}^{(k)} + \frac{\alpha}{r} {B_k}^{\star} {A_k}^{\star}, \qquad \left\Vert \Delta {W_{\text{trunk}}}^{(k)} \right\Vert_{F} = \left\Vert \frac{\alpha}{r} {B_k}^{\star} {A_k}^{\star} \right\Vert_{F} > 0
+$$
 
 * **Out-of-Distribution Holdout Rescue in M2 (Gen 94):** Merging `M1` into the trunk and training on 14 disjoint verified trajectories reduces loss from `0.8898 -> 0.7382` and rescues **7 of the 13 strictly excluded HumanEval holdouts** in a single generation (`HumanEval/93`, `115`, `120`, `127`, `130`, `135`, `160`), jumping from **92.07% to 96.34%** while cutting mean tokens to **240.0**.
-* **The Bi-Level Asymptotic Plateau at M3 (Gen 95):** In Generation 95 (`M3_ReLoRA_Gen95`), training on 17 additional trajectories lowers loss (`0.5881 -> 0.5310`) and boosts Turn-0 Autonomy from **80.00% to 88.00%**, but benchmark accuracy stalls at **158/164 HumanEval** and **17/20 Repo**. Once $\pi_{\theta_k}$ internalizes all trajectories reachable under a static curriculum $D_{\text{fixed}}$ and rank-16 attention adapters, the remaining 6 holdouts and 3 repository tasks lie outside the multi-turn repair horizon, starving the gradient buffer of novel signal.
+* **The Bi-Level Asymptotic Plateau at M3 (Gen 95):** In Generation 95 (`M3_ReLoRA_Gen95`), training on 17 additional trajectories lowers loss (`0.5881 -> 0.5310`) and boosts Turn-0 Autonomy from **80.00% to 88.00%**, but benchmark accuracy stalls at **158/164 HumanEval** and **17/20 Repo**. Once ${\pi}_{\theta_k}$ internalizes all trajectories reachable under a static curriculum $D_{\text{fixed}}$ and rank-16 attention adapters, the remaining 6 holdouts and 3 repository tasks lie outside the multi-turn repair horizon, starving the gradient buffer of novel signal.
 
 ### 4.3 Regime III: Tri-Level Curriculum & Trainer Self-Adaptation (Generations 96 to 98, M4 to M6)
 When the **MetaCurriculumController** detects $\Delta \text{HumanEval} \le 0$ and $\Delta \text{Repo} \le 0$ at Generation 95, it transitions the system from Bi-Level RSI to **Tri-Level RSI** by jointly mutating the **Harness ($H_k$)**, **Trunk Weights ($\theta_k$)**, **Curriculum Generator ($D_k$)**, and **Trainer Schedule ($T_k$)**:
 
-$$\big(\theta_{k+1}, H_{k+1}, D_{k+1}, T_{k+1}\big) = \mathcal{M}_{\text{Tri-Level}}\Big(\theta_k, H_k, D_k, T_k, \mathcal{T}_{\text{diag}}(\pi_{\theta_k})\Big)$$
+$$
+\big(\theta_{k+1}, H_{k+1}, D_{k+1}, T_{k+1}\big) = \mathcal{M}_{\text{Tri-Level}}\Big(\theta_k, H_k, D_k, T_k, \mathcal{T}_{\text{diag}}({\pi}_{\theta_k})\Big)
+$$
 
 Specifically, the controller executes three structural upgrades:
 1. **Subspace Capacity Expansion & Turn-Delta Advantage Weighting ($T_k \rightarrow T_{k+1}$):** Doubles ReLoRA rank from $r=16 \rightarrow 32$ ($\alpha=64.0$) and expands low-rank adaptation across all **7 Attention and MLP linear projections** (`q_proj`, `k_proj`, `v_proj`, `o_proj`, `gate_proj`, `up_proj`, `down_proj` across the top 8 transformer blocks = 56 linear modules). Each trajectory in the loss is weighted by the number of multi-turn harness repairs saved:
 
-$$\mathcal{L}_{\text{Tri-RSI}}(\theta) = -\frac{1}{|\mathcal{B}_k|} \sum_{\tau \in \mathcal{B}_k} \Big(1 + \alpha_{\text{adv}} \cdot \text{TurnsSaved}(\tau)\Big) \sum_{t=1}^{|\tau|} \log \pi_{\theta}(a_t \mid s_t)$$
+$$
+\mathcal{L}_{\text{Tri-RSI}}(\theta) = -\frac{1}{\vert \mathcal{B}_k \vert} \sum_{\tau \in \mathcal{B}_k} \Big(1 + \alpha_{\text{adv}} \cdot \operatorname{TurnsSaved}(\tau)\Big) \sum_{t=1}^{\vert \tau \vert} \log \pi_{\theta}(a_t \mid s_t)
+$$
 
 2. **Zone of Proximal Development (ZPD) Stepping-Stone Synthesis ($D_k \rightarrow D_{k+1}$):** Clusters sanitized failure diagnostics and synthesizes strictly disjoint stepping-stone problems (Horner/Newton-Raphson polynomial root isolation, lexicographic grid BFS walks, nested bracket depth automata, signed-digit stable sorting, cyclic string rotation matching, and bounded even-digit interval extraction). Only strict ZPD bridges where Turn-0 fails ($\text{Pass}_{\text{Turn-0}} = 0$) and Turn-$N$ succeeds ($\text{Pass}_{\text{Turn-}N} = 1$) enter the ReLoRA buffer.
 3. **3-Way Multi-File AST Fission (`Repo: 17/20 -> 20/20`):** Automatically decomposes single-file algorithmic seeds into 3-file modular packages (`models.py`, `serializer.py`, `service.py`) and injects cross-module schema drift, atomic state rollback exceptions, and AST call-graph keyword refactoring tasks.
@@ -142,7 +150,7 @@ All HumanEval holdout problems listed below were strictly excluded from training
 
 To verify mathematically that each generation permanently mutates the underlying `Qwen2.5-Coder-1.5B-Instruct` base trunk parameters (`self.base.weight.data.add_(delta_w)`) prior to unwrapping adapters and initializing the next generation, the daemon records three cryptographic and numerical invariants at every ReLoRA merge step:
 
-| Generation & Checkpoint | Active Rank & Target Projections | Cross-Entropy Loss (Start -> End) | Merged Frobenius Norm \|\|ΔW_trunk\|\|_F | Pre-Merge -> Post-Merge Trunk SHA-256 | Mutation Verified |
+| Generation & Checkpoint | Active Rank & Target Projections | Cross-Entropy Loss (Start -> End) | Merged Frobenius Norm `||ΔW_trunk||_F` | Pre-Merge -> Post-Merge Trunk SHA-256 | Mutation Verified |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **Gen 94 (`M2_ReLoRA_Gen94`)** | `r=16` (4 Attn Projections) | `0.8898 -> 0.7382` | Merged (14 Trajectories) | ReLoRA Consolidation 1 | `True` |
 | **Gen 95 (`M3_ReLoRA_Gen95`)** | `r=16` (4 Attn Projections) | `0.5881 -> 0.5310` | Merged (17 Trajectories) | `... -> 31e42f34d7d9` | `True` |
@@ -165,11 +173,6 @@ To verify mathematically that each generation permanently mutates the underlying
 * `v15_trilevel_rsi_gen98_bundle.zip` — Complete reproducibility archive for Generations 96--98.
 * `v14_multigen_rsi_gen95_bundle.zip` — Reproducibility archive for the Bi-Level ReLoRA run (`Gen 90 -> Gen 95`, `M0 -> M3`).
 
-### Hardware & Environment Requirements
-* Python 3.10+ with PyTorch 2.1+ (CUDA `bfloat16` / `float16` support)
-* `transformers >= 4.40.0`, `accelerate`, `huggingface_hub`
-* NVIDIA GPU with >= 8GB VRAM for in-place `Qwen2.5-Coder-1.5B-Instruct` ReLoRA consolidation
-
 ### Running the Tri-Level ReLoRA RSI Daemon
 To execute the unbuffered Tri-Level Curriculum + ReLoRA consolidation loop (`M3 -> M4 -> M5 -> M6`) and generate the telemetry and verification bundle:
 
@@ -179,8 +182,6 @@ To execute the unbuffered Tri-Level Curriculum + ReLoRA consolidation loop (`M3 
 ---
 
 ## 8. Citation
-
-If you build upon this architecture, the 4-Layer Execution Firewall, or the Tri-Level ReLoRA consolidation pipeline in your research, please cite:
 
     @article{gavares2026thinkoutside,
       title   = {Think Outside the Weights: Bi-Level Harness Optimization and Tri-Level ReLoRA Consolidation for Autonomous Recursive Self-Improvement in LLM Agents},
