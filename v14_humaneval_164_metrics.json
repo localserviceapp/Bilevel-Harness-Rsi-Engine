@@ -4,10 +4,10 @@
   "total_tasks": 164,
   "raw_baseline_solved": 107,
   "raw_baseline_pass_at_1": 0.6524,
-  "bilevel_harness_solved": 149,
-  "bilevel_harness_pass_at_1": 0.9085,
-  "absolute_pass_rate_lift_pct": 25.61,
-  "net_tasks_rescued_by_harness": 42,
+  "bilevel_harness_solved": 150,
+  "bilevel_harness_pass_at_1": 0.9146,
+  "absolute_pass_rate_lift_pct": 26.22,
+  "net_tasks_rescued_by_harness": 43,
   "per_task_results": [
     {
       "task_id": "HumanEval/0",
@@ -1670,6 +1670,14 @@
     "stage3_system2_final_closure": {
       "solved": 149,
       "pass_at_1": 0.9085
+    },
+    "stage4_loop4_lora_single_run": {
+      "solved": 150,
+      "pass_at_1": 0.9146
+    },
+    "stage4_loop4_lora_cumulative": {
+      "solved": 151,
+      "pass_at_1": 0.9207
     }
   },
   "generations_89_to_90_elites": [
@@ -1687,5 +1695,9 @@
       "sha256": "f5464b78c2ca096c",
       "archive_elites_logged": 25
     }
-  ]
+  ],
+  "single_run_loop4_solved": 150,
+  "single_run_loop4_pass_at_1": 0.9146,
+  "cumulative_loop4_solved": 151,
+  "cumulative_loop4_pass_at_1": 0.9207
 }

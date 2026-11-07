@@ -1,0 +1,13 @@
+{
+  "generation": 93,
+  "verified_trajectories_distilled": 30,
+  "epoch_losses": [
+    2.0937,
+    1.4581
+  ],
+  "swebench_evo_solved": "17/20 (85.00%)",
+  "humaneval_post_loop4_solved": "150/164 (91.46%)",
+  "newly_rescued_unseen_holdouts": [
+    "HumanEval/103"
+  ]
+}

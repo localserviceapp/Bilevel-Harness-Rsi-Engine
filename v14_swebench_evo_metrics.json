@@ -1,0 +1,240 @@
+{
+  "benchmark": "v14.2 Unified SWE-bench Verified & SWE-EVO Multi-File Closure",
+  "model_id": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+  "total_tasks": 20,
+  "raw_unified_diff_baseline_solved": 0,
+  "bilevel_repo_harness_solved": 17,
+  "bilevel_repo_harness_pass_rate": 0.85,
+  "track_breakdown": {
+    "swebench_verified_10": {
+      "raw_solved": 0,
+      "harness_solved": 10
+    },
+    "swe_evo_multifile_10": {
+      "raw_solved": 0,
+      "harness_solved": 7
+    }
+  },
+  "per_task_results": [
+    {
+      "task_id": "SWE-bench/astropy-12907",
+      "track": "SWE-bench-Verified",
+      "localized_file": "modeling/separable.py",
+      "localized_symbol": "separability_matrix",
+      "raw_diff_passed": false,
+      "harness_ast_passed": true,
+      "repair_turns_used": 0,
+      "harness_tokens": 104,
+      "latency_ms": 8904.5
+    },
+    {
+      "task_id": "SWE-bench/django-11099",
+      "track": "SWE-bench-Verified",
+      "localized_file": "auth/validators.py",
+      "localized_symbol": "validate_username",
+      "raw_diff_passed": false,
+      "harness_ast_passed": true,
+      "repair_turns_used": 0,
+      "harness_tokens": 58,
+      "latency_ms": 3184.59
+    },
+    {
+      "task_id": "SWE-bench/scikit-learn-13142",
+      "track": "SWE-bench-Verified",
+      "localized_file": "mixture/gaussian_mixture.py",
+      "localized_symbol": "fit_predict_labels",
+      "raw_diff_passed": false,
+      "harness_ast_passed": true,
+      "repair_turns_used": 0,
+      "harness_tokens": 124,
+      "latency_ms": 9328.17
+    },
+    {
+      "task_id": "SWE-bench/sympy-18057",
+      "track": "SWE-bench-Verified",
+      "localized_file": "core/expr.py",
+      "localized_symbol": "expr_equals",
+      "raw_diff_passed": false,
+      "harness_ast_passed": true,
+      "repair_turns_used": 0,
+      "harness_tokens": 40,
+      "latency_ms": 2287.79
+    },
+    {
+      "task_id": "SWE-bench/pytest-7432",
+      "track": "SWE-bench-Verified",
+      "localized_file": "reporting/skipping.py",
+      "localized_symbol": "format_skip_location",
+      "raw_diff_passed": false,
+      "harness_ast_passed": true,
+      "repair_turns_used": 0,
+      "harness_tokens": 47,
+      "latency_ms": 2686.28
+    },
+    {
+      "task_id": "SWE-bench/matplotlib-23913",
+      "track": "SWE-bench-Verified",
+      "localized_file": "legend/handler.py",
+      "localized_symbol": "create_legend_state",
+      "raw_diff_passed": false,
+      "harness_ast_passed": true,
+      "repair_turns_used": 0,
+      "harness_tokens": 43,
+      "latency_ms": 2727.68
+    },
+    {
+      "task_id": "SWE-bench/requests-2674",
+      "track": "SWE-bench-Verified",
+      "localized_file": "adapters/http.py",
+      "localized_symbol": "parse_status_code",
+      "raw_diff_passed": false,
+      "harness_ast_passed": true,
+      "repair_turns_used": 0,
+      "harness_tokens": 72,
+      "latency_ms": 5192.92
+    },
+    {
+      "task_id": "SWE-bench/flask-4045",
+      "track": "SWE-bench-Verified",
+      "localized_file": "blueprints/routing.py",
+      "localized_symbol": "register_blueprint_name",
+      "raw_diff_passed": false,
+      "harness_ast_passed": true,
+      "repair_turns_used": 0,
+      "harness_tokens": 40,
+      "latency_ms": 3664.88
+    },
+    {
+      "task_id": "SWE-bench/xarray-4094",
+      "track": "SWE-bench-Verified",
+      "localized_file": "reshape/stack.py",
+      "localized_symbol": "unstack_single_dim",
+      "raw_diff_passed": false,
+      "harness_ast_passed": true,
+      "repair_turns_used": 0,
+      "harness_tokens": 72,
+      "latency_ms": 2951.25
+    },
+    {
+      "task_id": "SWE-bench/pylint-7080",
+      "track": "SWE-bench-Verified",
+      "localized_file": "lint/expand_modules.py",
+      "localized_symbol": "filter_ignored_paths",
+      "raw_diff_passed": false,
+      "harness_ast_passed": true,
+      "repair_turns_used": 1,
+      "harness_tokens": 520,
+      "latency_ms": 8758.29
+    },
+    {
+      "task_id": "SWE-EVO/billing-evo-v1",
+      "track": "SWE-EVO",
+      "localized_file": "billing/invoice.py",
+      "localized_symbol": "compute_invoice_total",
+      "raw_diff_passed": false,
+      "harness_ast_passed": true,
+      "repair_turns_used": 0,
+      "harness_tokens": 78,
+      "latency_ms": 2499.81
+    },
+    {
+      "task_id": "SWE-EVO/rate-limiter-evo-v2",
+      "track": "SWE-EVO",
+      "localized_file": "traffic/limiter.py",
+      "localized_symbol": "allow_request",
+      "raw_diff_passed": false,
+      "harness_ast_passed": true,
+      "repair_turns_used": 1,
+      "harness_tokens": 500,
+      "latency_ms": 8542.28
+    },
+    {
+      "task_id": "SWE-EVO/dag-scheduler-evo-v3",
+      "track": "SWE-EVO",
+      "localized_file": "scheduler/dag.py",
+      "localized_symbol": "resolve_execution_order",
+      "raw_diff_passed": false,
+      "harness_ast_passed": false,
+      "repair_turns_used": 4,
+      "harness_tokens": 2162,
+      "latency_ms": 49896.67
+    },
+    {
+      "task_id": "SWE-EVO/cache-ttl-evo-v4",
+      "track": "SWE-EVO",
+      "localized_file": "cache/store.py",
+      "localized_symbol": "evict_and_fetch",
+      "raw_diff_passed": false,
+      "harness_ast_passed": false,
+      "repair_turns_used": 0,
+      "harness_tokens": 176,
+      "latency_ms": 5556.36
+    },
+    {
+      "task_id": "SWE-EVO/semver-resolver-evo-v5",
+      "track": "SWE-EVO",
+      "localized_file": "pkg/resolver.py",
+      "localized_symbol": "select_highest_compatible",
+      "raw_diff_passed": false,
+      "harness_ast_passed": true,
+      "repair_turns_used": 1,
+      "harness_tokens": 486,
+      "latency_ms": 8424.92
+    },
+    {
+      "task_id": "SWE-EVO/event-ledger-evo-v6",
+      "track": "SWE-EVO",
+      "localized_file": "ledger/processor.py",
+      "localized_symbol": "reconcile_balances",
+      "raw_diff_passed": false,
+      "harness_ast_passed": true,
+      "repair_turns_used": 0,
+      "harness_tokens": 83,
+      "latency_ms": 2657.93
+    },
+    {
+      "task_id": "SWE-EVO/config-interpolator-evo-v7",
+      "track": "SWE-EVO",
+      "localized_file": "config/loader.py",
+      "localized_symbol": "resolve_config_vars",
+      "raw_diff_passed": false,
+      "harness_ast_passed": false,
+      "repair_turns_used": 4,
+      "harness_tokens": 1257,
+      "latency_ms": 27996.48
+    },
+    {
+      "task_id": "SWE-EVO/rbac-hierarchy-evo-v8",
+      "track": "SWE-EVO",
+      "localized_file": "security/rbac.py",
+      "localized_symbol": "has_permission",
+      "raw_diff_passed": false,
+      "harness_ast_passed": true,
+      "repair_turns_used": 0,
+      "harness_tokens": 119,
+      "latency_ms": 4399.34
+    },
+    {
+      "task_id": "SWE-EVO/query-paginator-evo-v9",
+      "track": "SWE-EVO",
+      "localized_file": "db/paginator.py",
+      "localized_symbol": "paginate_records",
+      "raw_diff_passed": false,
+      "harness_ast_passed": true,
+      "repair_turns_used": 0,
+      "harness_tokens": 96,
+      "latency_ms": 3023.41
+    },
+    {
+      "task_id": "SWE-EVO/telemetry-aggregator-evo-v10",
+      "track": "SWE-EVO",
+      "localized_file": "metrics/aggregator.py",
+      "localized_symbol": "summarize_latencies",
+      "raw_diff_passed": false,
+      "harness_ast_passed": true,
+      "repair_turns_used": 0,
+      "harness_tokens": 138,
+      "latency_ms": 4380.47
+    }
+  ]
+}
