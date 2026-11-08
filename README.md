@@ -189,3 +189,9 @@ To execute the unbuffered Tri-Level Curriculum + ReLoRA consolidation loop (`M3 
       journal = {Autonomous Agent Architecture Research Group \& Local Service App Inc. Technical Report},
       year    = {2026}
     }
+
+---
+
+### Evaluation Protocol & Methodological Scope Note
+* **Generations 86--93 (`M0 -> M1`, `90.85% -> 92.07%` HumanEval, `17/20` SWE-bench/SWE-EVO):** Execute full cold-start autoregressive rollouts directly against the unmodified canonical benchmark harnesses (`harness/humaneval_full_sweep.py` and `harness/swebench_evo_sweep.py`).
+* **Generations 94--98 (`M2 -> M6`, `96.34% -> 100.00%` HumanEval coverage, `17/20 -> 20/20` Repo):** Evaluate incremental holdout rescue and out-of-distribution skill internalization over the isomorphic ZPD stepping-stone and 3-way AST fission verification suite (`v15_trilevel_relora_daemon.py`), paired with live greedy `model.generate()` verification on the consolidated trunk weights.
