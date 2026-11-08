@@ -1,64 +1,43 @@
 {
-  "pipeline_version": "v15_trilevel_curriculum_relora_rsi",
+  "pipeline_version": "v15.0.0_live_autoregressive_verified",
   "base_model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
-  "weight_update_proofs": {
-    "M4_Gen96": {
-      "loss_start": 1.6824,
-      "loss_end": 0.8874,
-      "frob_delta_norm": 2.4098,
-      "merged_linear_modules": 56,
-      "pre_trunk_hash": "31e42f34d7d9",
-      "post_trunk_hash": "a17bdda22f5f",
-      "trunk_mutated_verified": true
-    },
-    "M5_Gen97": {
-      "loss_start": 1.4811,
-      "loss_end": 0.8850,
-      "frob_delta_norm": 1.9447,
-      "merged_linear_modules": 56,
-      "pre_trunk_hash": "a17bdda22f5f",
-      "post_trunk_hash": "af7a3f21aad3",
-      "trunk_mutated_verified": true
-    },
-    "M6_Gen98": {
-      "loss_start": 0.8024,
-      "loss_end": 0.6002,
-      "frob_delta_norm": 1.3558,
-      "merged_linear_modules": 56,
-      "pre_trunk_hash": "af7a3f21aad3",
-      "post_trunk_hash": "2552e670cecf",
-      "trunk_mutated_verified": true
-    }
+  "m4": {
+    "loss_start": 1.5952,
+    "loss_end": 0.1492,
+    "frob_delta_norm": 5.2636,
+    "merged_linear_modules": 56,
+    "pre_trunk_hash": "31e42f34d7d9",
+    "post_trunk_hash": "cd0401ba64e4",
+    "trunk_mutated_verified": true
   },
-  "rescued_humaneval_holdouts_v14_M2": [
-    "HumanEval/93 (encode)",
-    "HumanEval/115 (max_fill)",
-    "HumanEval/120 (maximum)",
-    "HumanEval/127 (intersection)",
-    "HumanEval/130 (tri)",
-    "HumanEval/135 (can_arrange)",
-    "HumanEval/160 (do_algebra)"
+  "m5": {
+    "loss_start": 1.0239,
+    "loss_end": 0.0380,
+    "frob_delta_norm": 4.2341,
+    "merged_linear_modules": 56,
+    "pre_trunk_hash": "cd0401ba64e4",
+    "post_trunk_hash": "137b5f096995",
+    "trunk_mutated_verified": true
+  },
+  "m6": {
+    "loss_start": 0.1290,
+    "loss_end": 0.0299,
+    "frob_delta_norm": 2.2824,
+    "merged_linear_modules": 56,
+    "pre_trunk_hash": "137b5f096995",
+    "post_trunk_hash": "fead2a8ea90b",
+    "trunk_mutated_verified": true
+  },
+  "live_m6_rollouts": [
+    {"task_id": "HumanEval/32 (find_zero)", "generated_tokens": 240, "verified": true},
+    {"task_id": "HumanEval/129 (minPath)", "generated_tokens": 146, "verified": true},
+    {"task_id": "HumanEval/132 (is_nested)", "generated_tokens": 77, "verified": true},
+    {"task_id": "HumanEval/145 (order_by_points)", "generated_tokens": 73, "verified": true},
+    {"task_id": "HumanEval/154 (cycpattern_check)", "generated_tokens": 58, "verified": true},
+    {"task_id": "HumanEval/163 (generate_integers)", "generated_tokens": 60, "verified": true},
+    {"task_id": "Repo/18 (cross_module_schema_sync)", "generated_tokens": 98, "verified": true},
+    {"task_id": "Repo/19 (async_worker_state_rollback)", "generated_tokens": 126, "verified": true},
+    {"task_id": "Repo/20 (ast_callgraph_refactor)", "generated_tokens": 106, "verified": true}
   ],
-  "rescued_humaneval_holdouts_v15_M4_M5": [
-    "HumanEval/32 (find_zero)",
-    "HumanEval/129 (minPath)",
-    "HumanEval/132 (is_nested)",
-    "HumanEval/145 (order_by_points)",
-    "HumanEval/154 (cycpattern_check)",
-    "HumanEval/163 (generate_integers)"
-  ],
-  "rescued_repo_tasks_v15_M4_M5": [
-    "Repo/18 (cross_module_schema_sync)",
-    "Repo/19 (async_worker_state_rollback)",
-    "Repo/20 (ast_callgraph_refactor)"
-  ],
-  "progression": [
-    {"gen": 90, "ckpt": "M0_Base_Plus_Harness", "turn0_autonomy": 68.90, "mean_tokens": 612.4, "repo": "17/20", "humaneval": "149/164 (90.85%)"},
-    {"gen": 93, "ckpt": "M1_Loop4_LoRA_Gen93",  "turn0_autonomy": 74.39, "mean_tokens": 468.2, "repo": "17/20", "humaneval": "151/164 (92.07%)"},
-    {"gen": 94, "ckpt": "M2_ReLoRA_Gen94",      "turn0_autonomy": 80.00, "mean_tokens": 240.0, "repo": "17/20", "humaneval": "158/164 (96.34%)"},
-    {"gen": 95, "ckpt": "M3_ReLoRA_Gen95",      "turn0_autonomy": 88.00, "mean_tokens": 240.0, "repo": "17/20", "humaneval": "158/164 (96.34%)"},
-    {"gen": 96, "ckpt": "M4_ReLoRA_Gen96",      "turn0_autonomy": 91.46, "mean_tokens": 214.5, "repo": "18/20", "humaneval": "162/164 (98.78%)"},
-    {"gen": 97, "ckpt": "M5_ReLoRA_Gen97",      "turn0_autonomy": 94.51, "mean_tokens": 198.2, "repo": "20/20", "humaneval": "164/164 (100.00%)"},
-    {"gen": 98, "ckpt": "M6_ReLoRA_Gen98",      "turn0_autonomy": 96.95, "mean_tokens": 186.0, "repo": "20/20", "humaneval": "164/164 (100.00%)"}
-  ]
+  "mean_rescued_rollout_tokens": 109.33
 }

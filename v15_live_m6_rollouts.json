@@ -1,0 +1,43 @@
+{
+  "pipeline_version": "v15.0.0_live_autoregressive_verified",
+  "base_model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+  "m4": {
+    "loss_start": 1.5952,
+    "loss_end": 0.1492,
+    "frob_delta_norm": 5.2636,
+    "merged_linear_modules": 56,
+    "pre_trunk_hash": "31e42f34d7d9",
+    "post_trunk_hash": "cd0401ba64e4",
+    "trunk_mutated_verified": true
+  },
+  "m5": {
+    "loss_start": 1.0239,
+    "loss_end": 0.0380,
+    "frob_delta_norm": 4.2341,
+    "merged_linear_modules": 56,
+    "pre_trunk_hash": "cd0401ba64e4",
+    "post_trunk_hash": "137b5f096995",
+    "trunk_mutated_verified": true
+  },
+  "m6": {
+    "loss_start": 0.1290,
+    "loss_end": 0.0299,
+    "frob_delta_norm": 2.2824,
+    "merged_linear_modules": 56,
+    "pre_trunk_hash": "137b5f096995",
+    "post_trunk_hash": "fead2a8ea90b",
+    "trunk_mutated_verified": true
+  },
+  "live_m6_rollouts": [
+    {"task_id": "HumanEval/32 (find_zero)", "generated_tokens": 240, "verified": true},
+    {"task_id": "HumanEval/129 (minPath)", "generated_tokens": 146, "verified": true},
+    {"task_id": "HumanEval/132 (is_nested)", "generated_tokens": 77, "verified": true},
+    {"task_id": "HumanEval/145 (order_by_points)", "generated_tokens": 73, "verified": true},
+    {"task_id": "HumanEval/154 (cycpattern_check)", "generated_tokens": 58, "verified": true},
+    {"task_id": "HumanEval/163 (generate_integers)", "generated_tokens": 60, "verified": true},
+    {"task_id": "Repo/18 (cross_module_schema_sync)", "generated_tokens": 98, "verified": true},
+    {"task_id": "Repo/19 (async_worker_state_rollback)", "generated_tokens": 126, "verified": true},
+    {"task_id": "Repo/20 (ast_callgraph_refactor)", "generated_tokens": 106, "verified": true}
+  ],
+  "mean_rescued_rollout_tokens": 109.33
+}

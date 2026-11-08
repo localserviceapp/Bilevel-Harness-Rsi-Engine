@@ -154,13 +154,13 @@ To verify mathematically that each generation permanently mutates the underlying
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **Gen 94 (`M2_ReLoRA_Gen94`)** | `r=16` (4 Attn Projections) | `0.8898 -> 0.7382` | Merged (14 Trajectories) | ReLoRA Consolidation 1 | `True` |
 | **Gen 95 (`M3_ReLoRA_Gen95`)** | `r=16` (4 Attn Projections) | `0.5881 -> 0.5310` | Merged (17 Trajectories) | `... -> 31e42f34d7d9` | `True` |
-| **Gen 96 (`M4_ReLoRA_Gen96`)** | `r=32` (7 Attn+MLP, 56 Linear) | `1.6824 -> 0.8874` | **`2.4098`** | **`31e42f34d7d9 -> a17bdda22f5f`** | **`True`** |
-| **Gen 97 (`M5_ReLoRA_Gen97`)** | `r=32` (7 Attn+MLP, 56 Linear) | `1.4811 -> 0.8850` | **`1.9447`** | **`a17bdda22f5f -> af7a3f21aad3`** | **`True`** |
-| **Gen 98 (`M6_ReLoRA_Gen98`)** | `r=32` (7 Attn+MLP, 56 Linear) | `0.8024 -> 0.6002` | **`1.3558`** | **`af7a3f21aad3 -> 2552e670cecf`** | **`True`** |
+| **Gen 96 (`M4_ReLoRA_Gen96`)** | `r=32` (7 Attn+MLP, 56 Linear) | `1.5952 -> 0.1492` | **`5.2636`** | **`31e42f34d7d9 -> cd0401ba64e4`** | **`True`** |
+| **Gen 97 (`M5_ReLoRA_Gen97`)** | `r=32` (7 Attn+MLP, 56 Linear) | `1.0239 -> 0.0380` | **`4.2341`** | **`cd0401ba64e4 -> 137b5f096995`** | **`True`** |
+| **Gen 98 (`M6_ReLoRA_Gen98`)** | `r=32` (7 Attn+MLP, 56 Linear) | `0.1290 -> 0.0299` | **`2.2824`** | **`137b5f096995 -> fead2a8ea90b`** | **`True`** |
 
-1. **Unbroken SHA-256 Tensor Fingerprint Chain:** The pre-merge SHA-256 hash of the base trunk weight tensor at the start of Generation $k+1$ matches the exact post-merge SHA-256 hash produced at the end of Generation $k$ (`31e42f34d7d9` -> `a17bdda22f5f` -> `af7a3f21aad3` -> `2552e670cecf`).
-2. **Zero-Step Cross-Generational Loss Retention:** When Generation 98 (`M6`) attaches fresh rank-32 adapters with zeroed output projections ($B_0 = 0$, contributing zero adapter activation on step 0) and evaluates the combined ZPD + Repo Fission archive, its initial cross-entropy loss begins at **`0.8024`**—down from `1.6824` in `M4` and `1.4811` in `M5`—proving that the gradient updates from `M4` and `M5` are physically retained inside the base trunk parameters.
-3. **Monotonic Frobenius Norm Decay:** As the trunk absorbs the ZPD and multi-file repository curriculum across `M4 -> M5 -> M6`, the Frobenius norm of the merged parameter delta decreases monotonically (`2.4098 -> 1.9447 -> 1.3558`), confirming stable asymptotic convergence in parameter space.
+1. **Unbroken SHA-256 Tensor Fingerprint Chain:** The pre-merge SHA-256 hash of the base trunk weight tensor at the start of Generation $k+1$ matches the exact post-merge SHA-256 hash produced at the end of Generation $k$ (`31e42f34d7d9` -> `cd0401ba64e4` -> `137b5f096995` -> `fead2a8ea90b`).
+2. **Zero-Step Cross-Generational Loss Retention:** When Generation 98 (`M6`) attaches fresh rank-32 adapters with zeroed output projections ($B_0 = 0$, contributing zero adapter activation on step 0) and evaluates the combined ZPD + Repo Fission archive, its initial cross-entropy loss begins at **`0.1290`**—down from `1.5952` in `M4` and `1.0239` in `M5`—proving that the gradient updates from `M4` and `M5` are physically retained inside the base trunk parameters.
+3. **Monotonic Frobenius Norm Decay:** As the trunk absorbs the ZPD and multi-file repository curriculum across `M4 -> M5 -> M6`, the Frobenius norm of the merged parameter delta decreases monotonically (`5.2636 -> 4.2341 -> 2.2824`), confirming stable asymptotic convergence in parameter space.
 
 ---
 
